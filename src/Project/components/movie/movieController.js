@@ -4,7 +4,14 @@ const { application } = require("express");
 exports.list = async function (req, res) {
   const movies = await movieService.listMovies({});
 
-  res.render("index", {movies});
+  const hot = [];
+  const recent = [];
+  for(let i = 0; i  < movies.length;i++) { 
+    if(movies[i].hotRanking == 0) hot.push(movies[i]);
+    if(movies[i].update == "new") recent.push(movies[i]);
+  }
+  console.log(recent);
+  res.render("index", {movies, hot, recent});
 };
 
 // exports.item = async function (req, res) {

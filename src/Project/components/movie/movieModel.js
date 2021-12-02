@@ -11,7 +11,8 @@ const movieSchema = new mongoose.Schema({
   genre:String,
   author: String,
   episode: String,
-  trailer: String
+  trailer: String,
+  update: String
 });
 const movie = mongoose.model("Movie", movieSchema);
 
