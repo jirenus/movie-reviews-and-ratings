@@ -11,7 +11,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var categoryRouter = require('./routes/categories');
 var reviewRouter = require('./routes/review');
-
+const adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/review", express.static(path.join(__dirname, "public")));
-
+app.use('/admin', adminRouter);
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);

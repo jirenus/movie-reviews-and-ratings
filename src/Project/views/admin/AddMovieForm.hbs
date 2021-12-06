@@ -1,0 +1,84 @@
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">ADD NEW MOVIE</h4>
+            <p class="card-description">Enter information</p>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name of movie" />
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="password" class="form-control" id="author" placeholder="author name" />
+                </div>
+                <div class="form-group">
+                    <label for="episole">Episole</label>
+                    <input type="password" class="form-control" id="episole" placeholder="episole" />
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select class="form-control" id="type">
+                        <option>TV Series</option>
+                        <option>Movies</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="introduction">Introduction</label>
+                    <input type="password" class="form-control" id="introduction" placeholder="Introduction text" />
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select class="form-control" id="genre">
+                        <option>Adventure</option>
+                        <option>Action</option>
+                        <option>Cartoon</option>
+                        <option>Porn</option>
+                        <option>Hentai</option>
+                        <option>Anime</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description1">Description 1</label>
+                    <textarea
+                            class="form-control"
+                            id="description1"
+                            rows="4"
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description2">Description 2</label>
+                    <textarea
+                            class="form-control"
+                            id="description2"
+                            rows="4"
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description3">Description 3</label>
+                    <textarea
+                            class="form-control"
+                            id="description3"
+                            rows="4"
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image Upload</label>
+                    <input type="file" name="img[]" class="file-upload-default" />
+                    <div class="input-group col-xs-12">
+                        <input type="file" class="form-control file-upload-info" mutiple required placeholder="Upload Image" />
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
+                          </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="trailer">Trailer link</label>
+                    <input type="text" class="form-control" id="trailer" placeholder="Location" />
+                </div>
+                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
