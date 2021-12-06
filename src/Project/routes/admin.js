@@ -26,4 +26,14 @@ router.get('/form', function(req, res, next) {
     res.render('admin/form',{layout:'adminLayout.hbs'});
 });
 
+/* GET User profile page. */
+router.get('/userProfile', function(req, res, next) {
+    res.render('admin/userProfile',{layout:false});
+});
+
+/* GET User profile page. */
+router.get('/addUser', function(req, res, next) {
+    res.render('admin/addUserForm',{layout:false});
+});
+
 module.exports = router;
