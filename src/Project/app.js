@@ -11,6 +11,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var categoryRouter = require('./routes/categories');
 var reviewRouter = require('./routes/review');
+var listRouter = require('./components/list');
 const adminRouter = require('./routes/admin');
 
 var app = express();
@@ -28,13 +29,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/review", express.static(path.join(__dirname, "public")));
+
+app.use('/list', listRouter);
 app.use('/admin', adminRouter);
-app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/review', reviewRouter);
 app.use('/categories', categoryRouter);
-
+app.use('/', indexRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

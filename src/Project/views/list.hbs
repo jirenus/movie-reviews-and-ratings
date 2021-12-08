@@ -54,27 +54,20 @@
     <section class="product spad">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-12">
             <div class="trending__product">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                   <div class="section-title">
-                    <h4>All Movie Reviews</h4>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="btn__all">
-                    <a href="/list?page=1" class="primary-btn"
-                      >View All <span class="arrow_right"></span
-                    ></a>
+                    <h4>Trending Now</h4>
                   </div>
                 </div>
               </div>
               <div class="row">
-                {{#each movies}}
+                {{#each list}}
                 <a href="/{{_id}}">
                   
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                   
                   <div class="product__item" x-data="{bg: '{{imageTopic.[0]}}' }">
                   <div class="product__item__pic" @mouseover="bg = '{{imageTopic.[1]}}'"
@@ -101,35 +94,82 @@
 
               </a>
               {{/each}}
+              
             </div>
+          </div>
           </div>
         </div>
+        <div class="center">
+        <div class="pagination">
 
-          <div class="col-lg-4 col-md-6 col-sm-8">
-            <div class="product__sidebar">
-              <div class="product__sidebar__view">
-                <div class="section-title">
-                  <h5>Top 10 Movie in Week</h5>
-                </div>
-                <div class="filter__gallery">
-                  {{#each hot}}
-                  
-                  <div
-                    class="product__sidebar__view__item set-bg mix day years"
-                    data-setbg="{{imageTopic.[0]}} "  style="cursor: pointer;" onclick="window.location='/{{_id}}';"
-                  >
-                    <div class="ep">{{episode}}</div>
-                    <div class="view"><i class="fa fa-eye"></i> {{author}}</div>
-                    <h5><a href="/{{_id}}">{{movieName}}</a></h5>
-                  </div>
-
-                  {{/each}}
-                </div>
-              </div>
-            
-            </div>
-          </div>
+        </div>
         </div>
       </div>
+      {{!-- <div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div> --}}
     </section>
     <!-- Product Section End -->
+
+<script type="text/javascript">
+  const element = document.querySelector(".pagination"); 
+  let totalPages = {{ totalPage }}; 
+  let page ={{ page }};
+  element.innerHTML = createPagination(totalPages, page); 
+  function createPagination(totalPages,page) {
+    let liTag = ''; 
+    let active; 
+    let beforePage = page - 1; 
+    let afterPage = page + 1; 
+    if (page > 1) {
+      liTag += `<a href="/list?page=${page - 1}">Prev</a>`;
+    } 
+    if (page > 2) {
+      liTag += `<a href="/list?page=1">1</a>`; 
+      if (page > 3) {
+        liTag += `<a>...</a>`;
+      }
+    } 
+    if (page == totalPages) { 
+      beforePage = beforePage - 2; 
+    } else if (page == totalPages - 1) {
+      beforePage = beforePage - 1;
+    } 
+    if (page == 1) { 
+      afterPage = afterPage + 2; 
+    } else if (page == 2) { 
+      afterPage = afterPage + 1; 
+    } 
+    for (var plength = beforePage; plength <= afterPage; plength++) {
+      if (plength > totalPages) { 
+        continue; 
+      } 
+      if (plength == 0) { 
+        plength = plength + 1; 
+      } 
+      if (page == plength) {
+        active = "active";
+      } else { 
+        active = ""; 
+      } 
+      liTag += `<a ${active} href="/list?page=${plength}">${plength}</a>`;
+    } 
+    if (page < totalPages - 1) {
+      if (page < totalPages - 2) {
+          liTag += `<a>...</a>`;
+        } 
+      liTag += `<a href="/list?page=${totalPages}">${totalPages}</a>`;
+    } 
+    if (page < totalPages) {
+        liTag += `<a href="/list?page=${page + 1}">Next</a>`;
+    } 
+    element.innerHTML = liTag; return liTag;
+}
+</script>
