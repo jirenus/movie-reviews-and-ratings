@@ -9,7 +9,7 @@ exports.list = async function (req, res) {
   } else {
     page = parseInt(req.query.page);
   }
-  const list = await listService.listMovies(page);
+  const [list, topMovie] = await listService.listMovies(page);
  
   let totalPage = await listService.totalMovieNum();
   totalPage = Math.ceil(totalPage / 4);
@@ -18,21 +18,16 @@ exports.list = async function (req, res) {
     page: req.query.page, // Current Page
     totalPage, // Total Page
     list: list,
+    topMovie
   });
 };
 
 exports.item = async function (req, res) {
-  if(req.params.id == "login") res.render('login');
-  else if(req.params.id == "register") res.render('register');
-  else if(req.params.id == "categories") res.render('categories');
-  else
-  {
     let movie;
     try {
       movie = await listService.viewOne(req.params.id);
     } catch (err) {}
     res.render("review", { movie });
-  }
 };
 
 exports.searchList = async(req, res) => {
