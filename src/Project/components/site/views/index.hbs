@@ -1,0 +1,107 @@
+
+    <!-- Hero Section Begin index -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__slider owl-carousel">
+            {{#each top6Movies}}
+                <div class="hero__items set-bg" data-setbg="{{this.imageTopic.[0]}}">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">{{this.genre}}</div>
+                                <div class="label">{{this.type}}</div>
+                                <h2>{{this.movieName}}</h2>
+                                <p>{{this.intro}}</p>
+                                <a href="/movie/review/{{this._id}}"
+                                ><span>Watch Now</span> <i class="fa fa-angle-right"></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="trending__product">
+              <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                  <div class="section-title">
+                    <h4>All Movie Reviews</h4>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="btn__all">
+                    <a href="/list?page=1" class="primary-btn"
+                      >View All <span class="arrow_right"></span
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                {{#each movies}}
+                <a href="/movie/review/{{this._id}}">
+                  
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="product__item" x-data="{bg: '{{this.imageTopic.[0]}}' }">
+                        <div class="product__item__pic" @mouseover="bg = '{{this.imageTopic.[1]}}'"
+                             @mouseout="bg = '{{this.imageTopic.[0]}}'"
+                             x-bind:style="'background: url(' + bg + ') no-repeat center / cover;'" >
+
+                        <div class="ep">{{this.episode}}</div>
+                      <div class="comment">
+                        <i class="fa fa-comments"></i> 11
+                      </div>
+                      <div class="view"><i class="fa fa-eye"></i> {{this.author}}</div>
+                    </div>
+                    <div class="product__item__text">
+                      <ul>
+                        <li>{{this.type}}</li>
+                        <li>{{this.genre}}</li>
+                      </ul>
+                      <h5>
+                        <a href="/movie/review/{{this._id}}">{{this.movieName}}</a>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+
+              </a>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="product__sidebar">
+              <div class="product__sidebar__view">
+                <div class="section-title">
+                  <h5>Top 10 Movie in Week</h5>
+                </div>
+                <div class="filter__gallery">
+                  {{#each top10Movies}}
+                  
+                  <div
+                    class="product__sidebar__view__item set-bg mix day years"
+                    data-setbg="{{imageTopic.[0]}} "  style="cursor: pointer;" onclick="window.location='/movie/review/{{_id}}';">
+                    <div class="ep">{{episode}}</div>
+                    <div class="view"><i class="fa fa-eye"></i> {{author}}</div>
+                    <h5><a href="/movie/review/{{_id}}">{{movieName}}</a></h5>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Product Section End -->

@@ -5,29 +5,29 @@
  */
 const monoogse = require("mongoose");
 const dotev = require("dotenv");
-var app = require('../app');
-var debug = require('debug')('shopper:server');
-var http = require('http');
+
 dotev.config({ path: "./config.evn" });
 /**
  * Get port from environment and store in Express.
  */
-
- const DB = process.env.DATABASE;
+const app = require('../app');
+const debug = require('debug')('shopper:server');
+const http = require('http');
+  DB = process.env.DATABASE;
 
  monoogse
    .connect(DB)
    .then(() => {
      console.log("DB connect succesfully!");
  
-     const port = normalizePort(process.env.PORT || "3000");
+      port = normalizePort(process.env.PORT || "3000");
      app.set("port", port);
  
      /**
       * Create HTTP server.
       */
  
-     const server = http.createServer(app);
+      server = http.createServer(app);
  
      /**
       * Listen on provided port, on all network interfaces.
@@ -46,7 +46,7 @@ dotev.config({ path: "./config.evn" });
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -70,7 +70,7 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  const bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -94,8 +94,8 @@ function onError(error) {
  */
 
 function onListening(server, debug) {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+  const addr = server.address();
+  const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);

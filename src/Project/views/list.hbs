@@ -3,7 +3,7 @@
     <section class="hero">
       <div class="container">
         <div class="hero__slider owl-carousel">
-          <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+          <div class="hero__items set-bg" data-setbg="/img/hero/hero-1.jpg">
             <div class="row">
               <div class="col-lg-6">
                 <div class="hero__text">
@@ -17,7 +17,7 @@
               </div>
             </div>
           </div>
-          <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+          <div class="hero__items set-bg" data-setbg="/img/hero/hero-1.jpg">
             <div class="row">
               <div class="col-lg-6">
                 <div class="hero__text">
@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+          <div class="hero__items set-bg" data-setbg="/img/hero/hero-1.jpg">
             <div class="row">
               <div class="col-lg-6">
                 <div class="hero__text">
@@ -71,8 +71,7 @@
                   
                   <div class="product__item" x-data="{bg: '{{imageTopic.[0]}}' }">
                   <div class="product__item__pic" @mouseover="bg = '{{imageTopic.[1]}}'"
-                    @mouseout="bg = '{{imageTopic.[0]}}'"
-                    x-bind:style="'background: url(' + bg + ') no-repeat center / cover;'" >
+                    @mouseout="bg = '{{imageTopic.[0]}}'"style="'background: url(' + bg + ') no-repeat center / cover;'" >
                     
                       <div class="ep">{{episode}}</div>
                       <div class="comment">

@@ -1,6 +1,6 @@
 
     <!-- Normal Breadcrumb Begin -->
-    <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
+    <section class="normal-breadcrumb set-bg" data-setbg="/img/normal-breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -21,13 +21,29 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form action="#">
+                        {{#if wrongUser}}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Wrong password or username!!!</strong>
+                                <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {{/if}}
+                        {{#if bannedUser}}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>This account is being banned!!!</strong>
+                                <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {{/if}}
+                        <form action="/auth/login" method="post">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
-                                <span class="icon_mail"></span>
+                                <input type="text" placeholder="Username" name="username">
+                                <span class="icon_document"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="password" placeholder="Password" name="password">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">Login Now</button>
@@ -38,7 +54,7 @@
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>Dont’t Have An Account?</h3>
-                        <a href="/register" class="primary-btn">Register Now</a>
+                        <a href="/auth/register" class="primary-btn">Register Now</a>
                     </div>
                 </div>
             </div>

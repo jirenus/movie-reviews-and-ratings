@@ -1,11 +1,6 @@
 const listService = require("./listService");
-const { ObjectId } = require("mongodb");
-const { application } = require("express");
-exports.list = async function (req, res) {
-  // const list = await listService.listMovies({});
-  // console.log("listtttttttttt");
-  // res.render("list", {list});
 
+exports.list = async function (req, res) {
   let page;
   if (req.query.page === undefined) {
     page = 1;
@@ -19,7 +14,7 @@ exports.list = async function (req, res) {
   let totalPage = await listService.totalMovieNum();
   totalPage = Math.ceil(totalPage / 4);
   
-  res.render("list", {
+  res.render("list/views/categories", {
     page: req.query.page, // Current Page
     totalPage, // Total Page
     list: list,
@@ -39,3 +34,11 @@ exports.item = async function (req, res) {
     res.render("review", { movie });
   }
 };
+exports.searchList = async(req, res) => {
+  const searchList = await listService.search(req.body.description);
+  let found = true;
+  if (searchList.length === 0){
+    found = false;
+  }
+  res.render('list/views/searchPage', searchList, found);
+}

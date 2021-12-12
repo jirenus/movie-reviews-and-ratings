@@ -2,7 +2,7 @@ const List = require("../movie/movieModel");
 
 
 //exports.listMovies = () => List.find().lean();
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 6;
 
 exports.listMovies = (page) => {
     console.log(page);
@@ -16,3 +16,8 @@ exports.totalMovieNum = () => List.countDocuments();
 
 //exports.viewOne = (id) => Movie.findOne({ _id: id }).lean();
 exports.viewOne = (id) => List.findById(id).lean();
+// search movies
+exports.search = async (description) => {
+    let searchList = await List.find({movieName: {"$regex": description, "$options": "i" }}).lean();
+    return searchList;
+}

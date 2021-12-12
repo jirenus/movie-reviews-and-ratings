@@ -12,15 +12,12 @@ exports.home = async function (req, res) {
 };
 
 exports.item = async function (req, res) {
-  if(req.params.id == "login") res.render('login');
-  else if(req.params.id == "register") res.render('register');
-  else if(req.params.id == "categories") res.render('categories');
-  else
-  {
     let movie;
     try {
       movie = await movieService.viewOne(req.params.id);
     } catch (err) {}
-    res.render("review", { movie });
-  }
+    res.render("movie/views/review", { movie });
 };
+// exports.getReview = (req, res) => {
+//   res.render('movie/views/review');
+// }
