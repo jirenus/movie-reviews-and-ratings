@@ -34,11 +34,13 @@ exports.item = async function (req, res) {
     res.render("review", { movie });
   }
 };
+
 exports.searchList = async(req, res) => {
-  const searchList = await listService.search(req.body.description);
+  const description = req.query.description;
+  const searchList = await listService.search(description);
   let found = true;
   if (searchList.length === 0){
     found = false;
   }
-  res.render('list/views/searchPage', searchList, found);
+  res.render('list/views/searchPage', {searchList, found, description});
 }

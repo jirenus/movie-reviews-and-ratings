@@ -4,5 +4,5 @@ const listController = require("./listController");
 
 
 router.get('/categories', listController.list);
-router.post('/searchPage', listController.searchList);
+router.get('/searchPage', listController.searchList);
 module.exports = router;

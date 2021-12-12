@@ -18,6 +18,3 @@ exports.item = async function (req, res) {
     } catch (err) {}
     res.render("movie/views/review", { movie });
 };
-// exports.getReview = (req, res) => {
-//   res.render('movie/views/review');
-// }
