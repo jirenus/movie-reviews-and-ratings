@@ -17,8 +17,8 @@
 <div class="container-scroller">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-            <a class="sidebar-brand brand-logo" href="index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>
-            <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="sidebar-brand brand-logo" href="/"><img src="/img/logo.png" alt="logo" /></a>
+            <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="/"><img src="/img/logo.png" alt="logo" /></a>
         </div>
         <ul class="nav">
             <li class="nav-item nav-profile">
@@ -29,8 +29,7 @@
                         <!--change to offline or busy as needed-->
                     </div>
                     <div class="nav-profile-text d-flex flex-column pr-3">
-                        <span class="font-weight-medium mb-2">Henry Klein</span>
-
+                        <span class="font-weight-medium mb-2">{{user.name}}</span>
                     </div>
                     <span class="badge badge-danger text-white ml-3 rounded">3</span>
                 </a>
@@ -42,10 +41,24 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/movie">
+                <a class="nav-link" href="#">
                     <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     <span class="menu-title">Movie List</span>
                 </a>
+                <ul class="nav" style="margin-bottom: 0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/movie">
+                            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                            <span class="menu-title">View movie list</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/addMovie">
+                            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                            <span class="menu-title">Add new movie</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/user">
@@ -71,7 +84,7 @@
                             <p class="text-black">Notification</p>
                         </div>
                         <ul class="mt-4 pl-0">
-                            <li>Sign Out</li>
+                            <a href="/admin/logout" style="text-decoration: none"><li>Sign Out</li></a>
                         </ul>
                     </div>
                 </div>
@@ -163,7 +176,7 @@
                         <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
                             <a class="dropdown-item" href="#">
                                 <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/admin/logout">
                                 <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
                         </div>
                     </li>

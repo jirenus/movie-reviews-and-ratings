@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const movieSchema = new mongoose.Schema({
   movieName: String,
   type: String,
-  hotRanking: Number,
+  hotRanking:{
+    type: "number",
+    default: "1"
+  },
   intro: String,  
   description1: String,
   description2: String,
@@ -13,7 +16,10 @@ const movieSchema = new mongoose.Schema({
   author: String,
   episode: String,
   trailer: String,
-  update: String
+  update: {
+    type: "string",
+    default: "new"
+  }
 });
 const movie = mongoose.model("Movie", movieSchema);
 

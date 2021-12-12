@@ -1,39 +1,33 @@
 const express = require('express');
 const router = express.Router();
+const adminController = require('./adminController');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('admin/index',{layout:'adminLayout.hbs'});
-});
+router.get('/', adminController.getDashboardPage);
+
+/* GET user list page. */
+router.get('/user', adminController.getUserPage);
+
+
+// Movie Actions start
+/* GET movie list page. */
+router.get('/movie', adminController.getMoviePage);
+
+router.get('/movie/delete/:id', adminController.deleteMovie);
+
+router.get('/addMovie', adminController.getAddMovieForm);
+router.post('/addMovie', adminController.addMovie);
+
+// Movie actions end
 
 /* GET home page. */
-router.get('/user', function(req, res, next) {
-    res.render('admin/user',{layout:'adminLayout.hbs'});
-});
-
-/* GET home page. */
-router.get('/movie', function(req, res, next) {
-    res.render('admin/movie',{layout:'adminLayout.hbs'});
-});
-
-/* GET home page. */
-router.get('/add', function(req, res, next) {
-    res.render('admin/AddMovieForm',{layout:'adminLayout.hbs'});
-});
-
-/* GET home page. */
-router.get('/form', function(req, res, next) {
-    res.render('admin/form',{layout:'adminLayout.hbs'});
-});
+router.get('/form', adminController.getForm);
 
 /* GET User profile page. */
-router.get('/userProfile', function(req, res, next) {
-    res.render('admin/userProfile',{layout:false});
-});
+router.get('/userProfile', adminController.getProfilePage);
 
 /* GET User profile page. */
-router.get('/addUser', function(req, res, next) {
-    res.render('admin/addUserForm',{layout:false});
-});
+router.get('/addUser', adminController.getAddUserPage);
 
+router.get('/logout', adminController.logout);
 module.exports = router;

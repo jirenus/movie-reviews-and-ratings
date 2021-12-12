@@ -83,9 +83,14 @@
                                 <span class="arrow_carrot-down"></span>
                             </a>
                             <ul class="dropdown">
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">History</a></li>
-                                <li><a href="#">Chat with admin</a></li>
+                                {{#if user.userType}}
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="/admin">Dashboard</a></li>
+                                {{else}}
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Report to admin</a></li>
+                                {{/if}}
                                 <li class="border-top"><a href="/auth/logout">Logout</a></li>
                             </ul>
                         {{else}}
