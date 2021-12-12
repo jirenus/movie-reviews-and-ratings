@@ -1,18 +1,19 @@
 <div class="content-wrapper pb-0">
     <div class="page-header flex-wrap">
-        <h3 class="mb-0"> Hi, welcome back! <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">Dashboard</span>
+        <h3 class="mb-0"> Hi {{user.name}}, welcome back!
         </h3>
         <div class="d-flex">
         </div>
     </div>
 
     <div class="row">
-        <div class="col-xl-8 col-sm-6 grid-margin stretch-card">
+        <div class="col-xl-12 col-sm-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body px-0 overflow-auto">
                     <h4 class="card-title pl-4">
                         Manage movies
-                        <button type="button" href="/form" class="btn btn-sm ml-3 btn-success"> Add Movie </button>
+                        <a href="/admin/addMovie"><button type="button" class="btn btn-sm ml-3 btn-success"> Add Movie </button></a>
+                        <a href="/admin/movie"><button type="button" class="btn btn-sm ml-3 btn-success"> View Movie List </button></a>
                     </h4>
                     <div class="table-responsive">
                         <table class="table">
@@ -22,160 +23,31 @@
                                 <th>Genre</th>
                                 <th>Status</th>
                                 <th>Views</th>
-                                <th></th>
+                                <th>Author</th>
+                                <th>Update</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://i.pinimg.com/originals/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.png" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Naruto </p>
-                                            <small> TV series</small>
+                            {{#each movieList}}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{this.images.[0]}}" alt="movie {{this.movieName}} image" />
+                                            <div class="table-user-name ml-3">
+                                                <p class="mb-0 font-weight-medium"> {{this.movieName}} </p>
+                                                <small> {{this.type}}</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>Aventure</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> 720/720 </div>
-                                </td>
-                                <td> #0</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://i.pinimg.com/originals/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.png" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Naruto </p>
-                                            <small> TV series</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Aventure</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> 720/720 </div>
-                                </td>
-                                <td> #0</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://i.pinimg.com/originals/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.png" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Naruto </p>
-                                            <small> TV series</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Aventure</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> 720/720 </div>
-                                </td>
-                                <td> #0</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://i.pinimg.com/originals/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.png" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Naruto </p>
-                                            <small> TV series</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Aventure</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> 720/720 </div>
-                                </td>
-                                <td> #0</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://i.pinimg.com/originals/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.png" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Naruto </p>
-                                            <small> TV series</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Aventure</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> 720/720 </div>
-                                </td>
-                                <td> #0</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://i.pinimg.com/originals/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.png" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Naruto </p>
-                                            <small> TV series</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Aventure</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> 720/720 </div>
-                                </td>
-                                <td> #0</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>{{this.genre}}</td>
+                                    <td>
+                                        <div class="badge badge-inverse-success"> {{this.episode}} </div>
+                                    </td>
+                                    <td> 140</td>
+                                    <td>{{this.author}}</td>
+                                    <td>{{this.update}}</td>
+                                </tr>
+                            {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -185,39 +57,39 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title font-weight-medium"> Business Survey </div>
-                    <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we find a new solution </p>
-                    <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
-                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_3.jpg" alt="" />
-                        <div class="pt-2">
-                            <h5 class="mb-0">Villa called Archagel</h5>
-                            <p class="mb-0 text-muted">St, San Diego, CA</p>
-                            <h5 class="mb-0">$600/mo</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_1.jpg" alt="" />
-                        <div class="pt-2">
-                            <h5 class="mb-0">Luxury villa in Hermo</h5>
-                            <p class="mb-0 text-muted">Glendale, CA</p>
-                            <h5 class="mb-0">$900/mo</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_2.jpg" alt="" />
-                        <div class="pt-2">
-                            <h5 class="mb-0">House on the Clarita</h5>
-                            <p class="mb-0 text-muted">Business Survey</p>
-                            <h5 class="mb-0">$459/mo</h5>
-                        </div>
-                    </div>
-                    <a class="text-black mt-3 d-block font-weight-medium h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
+<!--        <div class="col-xl-4 col-sm-6 grid-margin stretch-card">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="card-title font-weight-medium"> Business Survey </div>-->
+<!--                    <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we find a new solution </p>-->
+<!--                    <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">-->
+<!--                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_3.jpg" alt="" />-->
+<!--                        <div class="pt-2">-->
+<!--                            <h5 class="mb-0">Villa called Archagel</h5>-->
+<!--                            <p class="mb-0 text-muted">St, San Diego, CA</p>-->
+<!--                            <h5 class="mb-0">$600/mo</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">-->
+<!--                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_1.jpg" alt="" />-->
+<!--                        <div class="pt-2">-->
+<!--                            <h5 class="mb-0">Luxury villa in Hermo</h5>-->
+<!--                            <p class="mb-0 text-muted">Glendale, CA</p>-->
+<!--                            <h5 class="mb-0">$900/mo</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">-->
+<!--                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_2.jpg" alt="" />-->
+<!--                        <div class="pt-2">-->
+<!--                            <h5 class="mb-0">House on the Clarita</h5>-->
+<!--                            <p class="mb-0 text-muted">Business Survey</p>-->
+<!--                            <h5 class="mb-0">$459/mo</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="text-black mt-3 d-block font-weight-medium h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
     <div class="row">
         <div class="col-xl-8 col-sm-6 grid-margin stretch-card">

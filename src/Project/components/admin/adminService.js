@@ -4,7 +4,16 @@ exports.getMovieList = async ()=>{
     const movieList = await movieModel.find().lean();
     return movieList;
 }
-
+exports.getShortedMovieList = async ()=>{
+    let movieList = await movieModel.find().lean();
+    movieList = movieList.map(item=>{
+        let movieName = item.movieName;
+        if (movieName.length >= 20)
+            movieName = movieName.slice(0,18) + "...";
+        return {...item, movieName: movieName};
+    })
+    return movieList;
+}
 exports.deleteMovie = async (movieID) => {
     let deletedMovie = null;
     deletedMovie = await movieModel.findByIdAndDelete(movieID);
