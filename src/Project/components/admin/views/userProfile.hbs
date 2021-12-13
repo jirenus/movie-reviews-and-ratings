@@ -20,7 +20,7 @@
                             <p>**********</p></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Fully Name</label>
+                        <div class="col-md-12"><label class="labels">Fully name</label>
                             <p>{{user.name}}</p>
                         </div>
                     </div>
@@ -39,7 +39,9 @@
                             <p>{{user.email}}</p>
                         </div>
                     </div>
-                    <div class="mt-5 text-center"><button href="#"class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+                    <div class="mt-5 text-center">
+                        <a href="/admin/updateProfile/{{user._id}}"><button class="btn btn-primary profile-button" type="button"> Edit Profile</button></a>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
