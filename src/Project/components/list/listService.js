@@ -2,10 +2,9 @@ const List = require("../movie/movieModel");
 
 
 //exports.listMovies = () => List.find().lean();
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 4;
 
 exports.listMovies = async (page) => {
-    console.log(page);
   
     const Skip = (page - 1) * PAGE_SIZE;
     page = parseInt(page);
@@ -14,7 +13,12 @@ exports.listMovies = async (page) => {
     topMovie = topMovie.slice(-5);
     return [listMovie, topMovie];
 };
-
+exports.listAllMovies = (page) => {
+    console.log(page);
+    const Skip = (page - 1) * PAGE_SIZE;
+    page = parseInt(page);
+    return List.find({}).skip(Skip).limit(PAGE_SIZE);
+  };
 exports.listMoviesByCategory = (genre, page) => {
     const Skip = (page - 1) * PAGE_SIZE;
     page = parseInt(page);

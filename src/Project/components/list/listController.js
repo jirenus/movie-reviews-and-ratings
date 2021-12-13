@@ -1,4 +1,5 @@
 const listService = require("./listService");
+const siteService = require("../site/siteService")
 
 exports.list = async function (req, res) {
   let page;
@@ -9,16 +10,19 @@ exports.list = async function (req, res) {
   } else {
     page = parseInt(req.query.page);
   }
-  const [list, topMovie] = await listService.listMovies(page);
- 
+  const list = await listService.listAllMovies(page);
+
   let totalPage = await listService.totalMovieNum();
   totalPage = Math.ceil(totalPage / 4);
-  
-  res.render("list/views/categories", {
+
+  let [movies, top8Movies, top10Movies] = await siteService.listMovies();
+
+
+  res.render("list/views/list", {
     page: req.query.page, // Current Page
     totalPage, // Total Page
     list: list,
-    topMovie
+    top8Movies
   });
 };
 
@@ -43,7 +47,6 @@ exports.searchList = async(req, res) => {
 exports.listByCategory = async function (req, res) {
   let genre=req.query.genre.charAt(0).toUpperCase() + req.query.genre.slice(1);
   let page=req.query.page
-
   const resList = await listService.listMoviesByCategory(genre, page);
 
   let totalPage=await listService.totalMovieByCategory(genre);

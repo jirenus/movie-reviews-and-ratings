@@ -34,19 +34,13 @@
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                   <div class="section-title">
-                    <h4>All Movie Reviews</h4>
+                    <h4>TOP 10 MOVIES HOT IN WEEK</h4>
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="btn__all">
-                    <a href="/list?page=1" class="primary-btn"
-                      >View All <span class="arrow_right"></span
-                    ></a>
-                  </div>
-                </div>
+
               </div>
               <div class="row">
-                {{#each movies}}
+                {{#each top10Movies}}
                 <a href="/movie/review/{{this._id}}">
                   
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -83,10 +77,16 @@
             <div class="product__sidebar">
               <div class="product__sidebar__view">
                 <div class="section-title">
-                  <h5>Top 10 Movie in Week</h5>
+                  <h5>ALL MOVIES</h5>
+                  <ul class="filter__controls">
+                  <a href="/list?page=1" class="primary-btn"
+                      >View All <span class="arrow_right"></span
+                    ></a>
+                </ul>
                 </div>
+
                 <div class="filter__gallery">
-                  {{#each top10Movies}}
+                  {{#each movies}}
                   
                   <div
                     class="product__sidebar__view__item set-bg mix day years"

@@ -27,39 +27,39 @@
                                     <h4 class="genre">{{genre}}</h4>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="product__page__filter">
-                                    <p>Order by:</p>
-                                    <select>
-                                        <option value="">A-Z</option>
-                                        <option value="">1-10</option>
-                                        <option value="">10-50</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        {{#each resList}}
-                        <a href="/{{_id}}">
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg='{{imageTopic.[0]}}'>
-                                        <div class="ep">{{episode}}</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> {{author}}</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>{{genre}}</li>
-                                            <li>{{type}}</li>
-                                        </ul>
-                                        <h5><a href="/{{_id}}">{{movieName}}</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        {{/each}}
+                    {{#each resList}}
+                       <a href="/movie/review/{{this._id}}">
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+
+                  <div class="product__item" x-data="{bg: '{{imageTopic.[0]}}' }">
+                  <div class="product__item__pic" @mouseover="bg = '{{imageTopic.[1]}}'"
+                    @mouseout="bg = '{{imageTopic.[0]}}'"
+                    x-bind:style="'background: url(' + bg + ') no-repeat center / cover;'" >
+
+                      <div class="ep">{{episode}}</div>
+                      <div class="comment">
+                        <i class="fa fa-comments"></i> 11
+                      </div>
+                      <div class="view"><i class="fa fa-eye"></i> {{author}}</div>
+                    </div>
+                    <div class="product__item__text">
+                      <ul>
+                        <li>{{type}}</li>
+                        <li>{{genre}}</li>
+                      </ul>
+                      <h5>
+                        <a href="/{{_id}}">{{movieName}}</a>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+
+              </a>
+                    {{/each}}
                     </div>
                 </div>
                 <div class="product__pagination">
@@ -85,7 +85,6 @@
 
     function createPagination(genre, totalPages, page) {
         let liTag = '';
-        totalPages=100  //test
 
         if (totalPages > 1 && page <= totalPages) {
             if (page != 1)
