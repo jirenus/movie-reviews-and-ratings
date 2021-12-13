@@ -1,125 +1,151 @@
-
-    <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="/"><i class="fa fa-home"></i> Home</a>
-                        <a href="/categories">Categories</a>
-                        <span>Romance</span>
-                    </div>
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="/"><i class="fa fa-home"></i> Home</a>
+                    <a href="/list/categories">Categories</a>
+                    <span>{{genre}}</span>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Breadcrumb End -->
+</div>
+<!-- Breadcrumb End -->
 
-    <!-- Product Section Begin -->
-    <section class="product-page spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="product__page__content">
-                        <div class="product__page__title">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-8 col-sm-6">
-                                    <div class="section-title">
-                                        <h4>Romance</h4>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="product__page__filter">
-                                        <p>Order by:</p>
-                                        <select>
-                                            <option value="">A-Z</option>
-                                            <option value="">1-10</option>
-                                            <option value="">10-50</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!-- Product Section Begin -->
+<section class="product-page spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="product__page__content">
+                    <div class="product__page__title">
                         <div class="row">
-                        <!--movie start here-->
-                            {{#each list}}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <a href="/movie/review/{{this._id}}"> <div class="product__item__pic set-bg" data-setbg="{{this.images.[0]}}">
-                                            <div class="ep">{{this.episode}}</div>
-                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        </div></a>
-                                        <div class="product__item__text">
-                                            <ul>
-                                                <li>{{this.type}}</li>
-                                                <li>{{this.genre}}</li>
-                                            </ul>
-                                            <h5><a href="/movie/review/{{this._id}}">{{this.movieName}}</a></h5>
-                                        </div>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <div class="section-title">
+                                    <h4 class="genre">{{genre}}</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="product__page__filter">
+                                    <p>Order by:</p>
+                                    <select>
+                                        <option value="">A-Z</option>
+                                        <option value="">1-10</option>
+                                        <option value="">10-50</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{#each resList}}
+                        <a href="/{{_id}}">
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg='{{imageTopic.[0]}}'>
+                                        <div class="ep">{{episode}}</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> {{author}}</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{genre}}</li>
+                                            <li>{{type}}</li>
+                                        </ul>
+                                        <h5><a href="/{{_id}}">{{movieName}}</a></h5>
                                     </div>
                                 </div>
-                            {{/each}}
-
-                        </div>
-                    </div>
-                    <div class="product__pagination">
-                        <a href="/movie/review" class="current-page">1</a>
-                        <a href="/movie/review">2</a>
-                        <a href="/movie/review">3</a>
-                        <a href="/movie/review">4</a>
-                        <a href="/movie/review">5</a>
-                        <a href="/movie/review"><i class="fa fa-angle-double-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="product__sidebar">
-                        <div class="product__sidebar__view">
-                            <div class="section-title">
-                                <h5>Top Views</h5>
                             </div>
-                            <ul class="filter__controls">
-                                <li class="active" data-filter="*">Day</li>
-                                <li data-filter=".week">Week</li>
-                                <li data-filter=".month">Month</li>
-                                <li data-filter=".years">Years</li>
-                            </ul>
-                            <div class="filter__gallery">
-                                <div class="product__sidebar__view__item set-bg mix day years"
-                                data-setbg="{{topMovie.[0].images.[0]}}">
-                                <div class="ep">{{topMovie.[0].episode}}</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="/movie/review/{{topMovie.[0]._id}}">{{topMovie.[0].movieName}}</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix month week"
-                            data-setbg="{{topMovie.[1].images.[0]}}">
-                            <div class="ep">{{topMovie.[1].episode}}</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="/movie/review/{{topMovie.[1]._id}}">{{topMovie.[1].movieName}}</a></h5>
-                        </div>
-                        <div class="product__sidebar__view__item set-bg mix week years"
-                        data-setbg="{{topMovie.[2].images.[0]}}">
-                        <div class="ep">{{topMovie.[2].episode}}</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        <h5><a href="/movie/review/{{topMovie.[2]._id}}">{{topMovie.[2].movieName}}</a></h5>
+                        </a>
+                        {{/each}}
                     </div>
-                    <div class="product__sidebar__view__item set-bg mix years month"
-                    data-setbg="{{topMovie.[3].images.[0]}}">
-                    <div class="ep">{{topMovie.[3].episode}}</div>
-                    <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                    <h5><a href="/movie/review/{{topMovie.[3]._id}}">{{topMovie.[3].movieName}}</a></h5>
                 </div>
-                <div class="product__sidebar__view__item set-bg mix day"
-                data-setbg="{{topMovie.[4].images.[0]}}">
-                <div class="ep">{{topMovie.[4].episode}}</div>
-                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                <h5><a href="/movie/review/{{topMovie.[4]._id}}">{{topMovie.[4].movieName}}</a></h5>
+                <div class="product__pagination">
+                    {{!-- <a href="/review" class="current-page">1</a>
+                    <a href="/review">2</a>
+                    <a href="/review">3</a>
+                    <a href="/review">4</a>
+                    <a href="/review">5</a>
+                    <a href="/review"><i class="fa fa-angle-double-right"></i></a> --}}
                 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- Product Section End -->
+<script type="text/javascript">
+    const element = document.querySelector(".product__pagination");
+    let totalPages = {{ totalPage }};
+    let page = {{ page }};
+    let genre = document.querySelector(".genre").innerHTML.toLowerCase();
+
+    createPagination(genre, totalPages, page);
+
+    function createPagination(genre, totalPages, page) {
+        let liTag = '';
+        totalPages=100  //test
+
+        if (totalPages > 1 && page <= totalPages) {
+            if (page != 1)
+                liTag += `<a href="/list/categories?genre=${genre}&page=${page - 1}">Prev</a>`;
+
+            liTag += `<a href="/list/categories?genre=${genre}&page=1">1</a>`;
+
+            if (totalPages <= 4)
+                for (let i = 2; i <= totalPages; i++)
+                    liTag += `<a href="/list/categories?genre=${genre}&page=${i}">${i}</a>`;
+
+            else {
+                if (page <= 3) {
+                    for (let i = 2; i <= Math.min(3, totalPages); i++)
+                        liTag += `<a href="/list/categories?genre=${genre}&page=${i}">${i}</a>`;
+
+                    if (page == 3) {
+                        if (totalPages > 3) {
+                            liTag += `<a href="/list/categories?genre=${genre}&page=4">4</a>`;
+                        }
+                    }
+
+                    if (totalPages - 2 > 2) {
+                        liTag += `<a>...</a>`;
+                        liTag += `<a href="/list/categories?genre=${genre}&page=${totalPages}">${totalPages}</a>`;
+                    }
+                }
+
+                else if (page > 3) {
+                    liTag += `<a>...</a>`;
+
+                    if (totalPages - page > 2) {
+
+                        for (let i = page - 1; i <= page; i++) {
+                            liTag += `<a href="/list/categories?genre=${genre}&page=${i}">${i}</a>`;
+                        }
+                        liTag += `<a href="/list/categories?genre=${genre}&page=${page + 1}">${page + 1}</a>`;
+                        liTag += `<a>...</a>`;
+                        liTag += `<a href="/list/categories?genre=${genre}&page=${totalPages}">${totalPages}</a>`;
+                    }
+                    else {
+                        if (page == totalPages - 2) {
+
+                            liTag += `<a href="/list/categories?genre=${genre}&page=${page - 1}">${page - 1}</a>`;
+                        }
+
+                        for (let i = totalPages - 2; i <= totalPages; i++) {
+                            liTag += `<a href="/list/categories?genre=${genre}&page=${i}">${i}</a>`;
+                        }
+                    }
+
+                }
+            }
+
+            if (page < totalPages)
+                liTag += `<a href="/list/categories?genre=${genre}&page=${page + 1}">Next</a>`;
+        }
+        element.innerHTML=liTag
+
+        currentPageElement=document.querySelectorAll(`a[href='/list/categories?genre=${genre}&page=${page}']`);
+        currentPageElement[currentPageElement.length-1].className="current-page"
+    }
+</script>

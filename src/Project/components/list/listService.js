@@ -14,8 +14,20 @@ exports.listMovies = async (page) => {
     topMovie = topMovie.slice(-5);
     return [listMovie, topMovie];
 };
+
+exports.listMoviesByCategory = (genre, page) => {
+    const Skip = (page - 1) * PAGE_SIZE;
+    page = parseInt(page);
+    if (genre==null)
+      return List.find({}).skip(Skip).limit(PAGE_SIZE);
+
+      return List.find({ genre: genre}).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE);
+};
   
 exports.totalMovieNum = () => List.countDocuments();
+
+exports.totalMovieByCategory = (genre) => List.find({ genre: genre});
+
 
 //exports.viewOne = (id) => Movie.findOne({ _id: id }).lean();
 exports.viewOne = (id) => List.findById(id).lean();

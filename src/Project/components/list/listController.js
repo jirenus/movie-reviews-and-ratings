@@ -39,3 +39,16 @@ exports.searchList = async(req, res) => {
   }
   res.render('list/views/searchPage', {searchList, found, description});
 }
+
+exports.listByCategory = async function (req, res) {
+  let genre=req.query.genre.charAt(0).toUpperCase() + req.query.genre.slice(1);
+  let page=req.query.page
+
+  const resList = await listService.listMoviesByCategory(genre, page);
+
+  let totalPage=await listService.totalMovieByCategory(genre);
+
+  totalPage=Math.ceil(totalPage.length/4)
+
+  res.render("list/views/categories", {resList, genre,totalPage,page});
+};
