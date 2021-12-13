@@ -1,4 +1,4 @@
-const User = require('./userModal');
+const User = require('./userModel');
 const {save} = require("debug");
 const bcrypt = require("bcrypt");
 
