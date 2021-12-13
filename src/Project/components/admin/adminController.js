@@ -12,6 +12,12 @@ class AdminController {
         res.render('admin/views/user',{layout:'adminLayout.hbs', userList});
     }
 
+    /* GET User profile page. */
+    async getProfilePage(req, res, next) {
+        const user = await adminService.getOneUser(req.params.id);
+        res.render('admin/views/userProfile',{layout:'adminLayout.hbs', user});
+    }
+
     /* GET movie page. */
     async getMoviePage(req, res, next) {
         const movieList = await adminService.getMovieList();
@@ -46,11 +52,6 @@ class AdminController {
     /* GET home page. */
     getForm(req, res, next) {
         res.render('admin/views/form',{layout:'adminLayout.hbs'});
-    }
-
-    /* GET User profile page. */
-    getProfilePage(req, res, next) {
-        res.render('admin/views/userProfile',{layout:false});
     }
 
     /* GET User profile page. */

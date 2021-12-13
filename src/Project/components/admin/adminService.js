@@ -6,6 +6,11 @@ exports.getUserList = async ()=>{
     return userList;
 }
 
+exports.getOneUser = async (userID) =>{
+    const user = await userModel.findById(userID);
+    return user;
+}
+
 exports.getMovieList = async ()=>{
     const movieList = await movieModel.find().lean();
     return movieList;

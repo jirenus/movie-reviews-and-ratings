@@ -8,6 +8,9 @@ router.get('/', adminController.getDashboardPage);
 /* GET user list page. */
 router.get('/user', adminController.getUserPage);
 
+/* GET User profile page. */
+router.get('/userProfile/:id', adminController.getProfilePage);
+
 
 // Movie Actions start
 /* GET movie list page. */
@@ -23,9 +26,6 @@ router.post('/updateMovie/:id', adminController.updateMovie);
 
 /* GET home page. */
 router.get('/form', adminController.getForm);
-
-/* GET User profile page. */
-router.get('/userProfile', adminController.getProfilePage);
 
 /* GET User profile page. */
 router.get('/addUser', adminController.getAddUserPage);
