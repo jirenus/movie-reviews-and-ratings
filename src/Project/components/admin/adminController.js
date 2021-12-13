@@ -7,8 +7,9 @@ class AdminController {
         res.render('admin/views/index',{layout:'adminLayout.hbs', movieList});
     }
     /* GET home page. */
-    getUserPage(req, res, next) {
-        res.render('admin/views/user',{layout:'adminLayout.hbs'});
+    async getUserPage(req, res, next) {
+        const userList = await adminService.getUserList();
+        res.render('admin/views/user',{layout:'adminLayout.hbs', userList});
     }
 
     /* GET movie page. */

@@ -1,4 +1,10 @@
 const movieModel = require("../movie/movieModel");
+const userModel = require('../auth/userModel');
+
+exports.getUserList = async ()=>{
+    const userList = await userModel.find().lean();
+    return userList;
+}
 
 exports.getMovieList = async ()=>{
     const movieList = await movieModel.find().lean();
