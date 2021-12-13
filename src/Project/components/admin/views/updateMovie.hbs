@@ -1,0 +1,92 @@
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            {{#if newMovie}}
+                <div class="alert alert-success" role="alert">
+                    Update movie information successfully!!!
+                </div>
+            {{/if}}
+            <h4 class="card-title">YOU ARE UPDATING MOVIE: {{movie.movieName}}</h4>
+            <p class="card-description">Enter information</p>
+            <form class="forms-sample" action="/admin/updateMovie/{{movie._id}}" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="movieName" id="name" placeholder="Name of movie" value="{{movie.movieName}}" />
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" placeholder="Author name" name="author" value="{{movie.author}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="episode">Episode</label>
+                    <input type="text" class="form-control" id="episole" placeholder="episode" name="episode" value="{{movie.episode}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select class="form-control" id="type" name="type" value="{{movie.type}}">
+                        <option>TV Series</option>
+                        <option>Movies</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="introduction">Introduction</label>
+                    <input type="text" class="form-control" id="introduction" placeholder="Introduction text" name="intro" value="{{movie.intro}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select class="form-control" id="genre" name="genre" value="{{movie.genre}}">
+                        <option>Adventure</option>
+                        <option>Action</option>
+                        <option>Cartoon</option>
+                        <option>Porn</option>
+                        <option>Hentai</option>
+                        <option>Anime</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description1">Description 1</label>
+                    <textarea
+                            class="form-control"
+                            id="description1"
+                            rows="4"
+                            name="description1"
+                    >{{movie.description1}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description2">Description 2</label>
+                    <textarea
+                            class="form-control"
+                            id="description2"
+                            rows="4"
+                            name="description2"
+                    >{{movie.description2}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description3">Description 3</label>
+                    <textarea
+                            class="form-control"
+                            id="description3"
+                            rows="4"
+                            name="description3"
+                    >{{movie.description3}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image Upload</label>
+                    <input type="file" name="img[]" class="file-upload-default" />
+                    <div class="input-group col-xs-12">
+                        <input type="file" class="form-control file-upload-info" mutiple placeholder="Upload Image" />
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
+                          </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="trailer">Trailer link</label>
+                    <input type="text" class="form-control" id="trailer" placeholder="Location" name="trailer" value="{{movie.trailer}}" />
+                </div>
+                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

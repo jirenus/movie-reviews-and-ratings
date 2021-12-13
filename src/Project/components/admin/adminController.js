@@ -29,7 +29,17 @@ class AdminController {
     getAddMovieForm(req, res, next) {
         res.render('admin/views/AddMovieForm',{layout:'adminLayout.hbs'});
     }
-
+    async getUpdateMoviePage(req, res){
+        const movieID = req.params.id;
+        const movie = await adminService.getOneMovie(movieID);
+        res.render('admin/views/updateMovie', {layout:'adminLayout.hbs', movie});
+    }
+    async updateMovie(req, res){
+        const movieID = req.params.id;
+        const newMovie = await adminService.updateMovie(movieID, req.body);
+        const movie = await adminService.getOneMovie(movieID);
+        res.render('admin/views/updateMovie', {layout:'adminLayout.hbs', newMovie, movie});
+    }
 
 
     /* GET home page. */

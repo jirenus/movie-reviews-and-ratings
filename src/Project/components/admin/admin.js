@@ -17,7 +17,8 @@ router.get('/movie/delete/:id', adminController.deleteMovie);
 
 router.get('/addMovie', adminController.getAddMovieForm);
 router.post('/addMovie', adminController.addMovie);
-
+router.get('/updateMovie/:id', adminController.getUpdateMoviePage);
+router.post('/updateMovie/:id', adminController.updateMovie);
 // Movie actions end
 
 /* GET home page. */
