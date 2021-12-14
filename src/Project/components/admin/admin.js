@@ -12,6 +12,7 @@ router.get('/user', adminController.getUserPage);
 router.get('/userProfile/:id', adminController.getProfilePage);
 router.get('/updateProfile/:id', adminController.getUpdateProfilePage);
 router.post('/updateProfile/:id', adminController.updateProfile);
+router.get('/user/delete/:id', adminController.deleteUser);
 
 
 // Movie Actions start

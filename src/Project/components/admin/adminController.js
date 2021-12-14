@@ -32,6 +32,12 @@ class AdminController {
         res.render('admin/views/userProfile', {layout:'adminLayout.hbs', result, user});
     }
 
+    async deleteUser(req, res) {
+        const userID = req.params.id;
+        const deletedUser = await adminService.deleteUser(userID);
+        res.redirect('/admin/user');
+    }
+
 
 
 

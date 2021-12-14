@@ -29,6 +29,12 @@ exports.updateProfile = async (userID, userDetail) =>{
     }
 }
 
+exports.deleteUser = async (userID) => {
+    let deletedUser = null;
+    deletedUser = await userModel.findByIdAndDelete(userID);
+    return deletedUser;
+}
+
 exports.getMovieList = async ()=>{
     const movieList = await movieModel.find().lean();
     return movieList;
