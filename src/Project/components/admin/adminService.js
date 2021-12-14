@@ -94,12 +94,6 @@ exports.getOneMovie = async (movieID) =>{
 }
 
 exports.updateMovie = async (movieID, movieDetail) =>{
-    let updateMovie = await movieModel.findOneAndUpdate({_id: movieID}, movieDetail, {new: true}, (err, docs)=>{
-        if(!err){
-            return updateMovie;
-        }else{
-            console.log({message: err});
-        }
-    }).clone();
+    let updateMovie = await movieModel.updateOne({ _id: movieID }, movieDetail);
     return updateMovie;
 }
