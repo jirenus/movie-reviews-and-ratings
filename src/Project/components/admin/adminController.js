@@ -44,6 +44,12 @@ class AdminController {
         res.redirect('/admin/user');
     }
 
+    async unlockUser(req, res){
+        const userID = req.params.id;
+        const result = await adminService.unlockUser(userID);
+        res.redirect('/admin/user');
+    }
+
 
 
     /* GET movie page. */

@@ -41,6 +41,12 @@ exports.lockUser = async (userID) =>{
     return result;
 }
 
+exports.unlockUser = async (userID) =>{
+    const result = await userModel.updateOne({ _id: userID },
+        { $set: {status: Boolean(true)}});
+    return result;
+}
+
 exports.getMovieList = async ()=>{
     const movieList = await movieModel.find().lean();
     return movieList;
