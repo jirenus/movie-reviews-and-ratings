@@ -38,6 +38,11 @@ class AdminController {
         res.redirect('/admin/user');
     }
 
+    async lockUser(req, res){
+        const userID = req.params.id;
+        const result = await adminService.lockUser(userID);
+        res.redirect('/admin/user');
+    }
 
 
 

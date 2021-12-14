@@ -13,7 +13,8 @@ router.get('/userProfile/:id', adminController.getProfilePage);
 router.get('/updateProfile/:id', adminController.getUpdateProfilePage);
 router.post('/updateProfile/:id', adminController.updateProfile);
 router.get('/user/delete/:id', adminController.deleteUser);
-
+router.get('/user/lock/:id', adminController.lockUser);
+// router.get('/user/unlock/:id', adminController.unlockUser);
 
 // Movie Actions start
 /* GET movie list page. */

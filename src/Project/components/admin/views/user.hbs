@@ -32,7 +32,7 @@ user.hbs
                                 {{#if status}}
                                     normal
                                 {{else}}
-                                    banned
+                                    locked
                                 {{/if}}
                             </td>
                             <td>
@@ -45,7 +45,7 @@ user.hbs
                                         <a class="dropdown-item" href="/admin/userProfile/{{_id}}">View</a>
                                         <a class="dropdown-item" href="/admin/updateProfile/{{_id}}">Edit</a>
                                         <a class="dropdown-item" href="/admin/user/delete/{{_id}}">Delete</a>
-                                        <a class="dropdown-item" href="#">Ban</a>
+                                        <a class="dropdown-item" href="/admin/user/lock/{{_id}}">Lock</a>
 
                                     </div>
                                 </div>
