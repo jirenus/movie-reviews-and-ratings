@@ -1,5 +1,6 @@
 const movieModel = require("../movie/movieModel");
 const userModel = require('../auth/userModel');
+const bcrypt = require("bcrypt");
 
 exports.getUserList = async ()=>{
     const userList = await userModel.find().lean();
@@ -7,8 +8,25 @@ exports.getUserList = async ()=>{
 }
 
 exports.getOneUser = async (userID) =>{
-    const user = await userModel.findById(userID);
+    const user = await userModel.findById(userID).lean();
     return user;
+}
+
+exports.updateProfile = async (userID, userDetail) =>{
+    if (userDetail.password != "") {
+        const hashPassword = await bcrypt.hash(userDetail.password, 10);
+        userDetail.password = hashPassword;
+        const result = await userModel.updateOne({ _id: userID },
+            { $set: {username: userDetail.username, name: userDetail.name,
+                email: userDetail.email, password: hashPassword, status: userDetail.status} });
+        return result;
+    }
+    else {
+        const result = await userModel.updateOne({ _id: userID },
+            { $set: {username: userDetail.username, name: userDetail.name,
+                    email: userDetail.email, status: userDetail.status} });
+        return result;
+    }
 }
 
 exports.getMovieList = async ()=>{

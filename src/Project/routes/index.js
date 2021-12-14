@@ -9,9 +9,9 @@ const path = require("path");
 const createError = require("http-errors");
 
 function route(app){
-    app.use("/review", express.static(path.join(__dirname, "public")));
-    app.use('/admin', guard.loggedInAdminGuard, adminRouter);
     app.use('/auth', authRouter);
+    app.use('/admin', guard.loggedInAdminGuard, adminRouter);
+    app.use("/review", express.static(path.join(__dirname, "public")));
     app.use('/list', listRouter);
     app.use('/movie', movieRouter);
     //app.use('/list',  siteRouter);

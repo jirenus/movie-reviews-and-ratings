@@ -10,6 +10,8 @@ router.get('/user', adminController.getUserPage);
 
 /* GET User profile page. */
 router.get('/userProfile/:id', adminController.getProfilePage);
+router.get('/updateProfile/:id', adminController.getUpdateProfilePage);
+router.post('/updateProfile/:id', adminController.updateProfile);
 
 
 // Movie Actions start

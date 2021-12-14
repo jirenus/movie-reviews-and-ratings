@@ -18,6 +18,23 @@ class AdminController {
         res.render('admin/views/userProfile',{layout:'adminLayout.hbs', user});
     }
 
+    async getUpdateProfilePage(req, res, next) {
+        const user = await adminService.getOneUser(req.params.id);
+        res.render('admin/views/updateProfile', {layout:'adminLayout.hbs', user});
+    }
+
+    async updateProfile(req, res){
+        // if (req.body.password !== "")
+        //     req.body.password = await adminService.hashPassword(req.body.password);
+        const userID = req.params.id;
+        const result = await adminService.updateProfile(userID, req.body);
+        const user = await adminService.getOneUser(userID);
+        res.render('admin/views/userProfile', {layout:'adminLayout.hbs', result, user});
+    }
+
+
+
+
     /* GET movie page. */
     async getMoviePage(req, res, next) {
         const movieList = await adminService.getMovieList();
