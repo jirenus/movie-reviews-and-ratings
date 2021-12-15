@@ -3,8 +3,9 @@ const adminService = require('./adminService');
 class AdminController {
     /* GET home page. */
     async getDashboardPage(req, res, next) {
+        const userList = await adminService.getUserList();
         const movieList = await adminService.getShortedMovieList();
-        res.render('admin/views/index',{layout:'adminLayout.hbs', movieList});
+        res.render('admin/views/index',{layout:'adminLayout.hbs', userList, movieList});
     }
     /* GET home page. */
     async getUserPage(req, res, next) {

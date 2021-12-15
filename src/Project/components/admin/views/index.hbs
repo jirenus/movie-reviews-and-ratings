@@ -1,11 +1,115 @@
 <div class="content-wrapper pb-0">
     <div class="page-header flex-wrap">
-        <h3 class="mb-0"> Hi {{user.name}}, welcome back!
-        </h3>
-        <div class="d-flex">
+        <h3 class="mb-0"> Hi {{user.name}}, welcome back!</h3>
+        <div class="d-flex"></div>
+    </div>
+<!--    Manage users-->
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body px-0 overflow-auto">
+                    <h4 class="card-title pl-4">
+                        Manage users
+                    </h4>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="bg-light">
+                            <tr>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each userList}}
+                                {{#if userType}}
+
+                                {{else}}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng8Jejbfct93auTLtTP08eTd5yXV_j_dh0Q&usqp=CAU" alt="image" />
+                                                <div class="table-user-name ml-3">
+                                                    <p class="mb-0 font-weight-medium">{{username}}</p>
+                                                    <small> Online</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{name}}</td>
+                                        <td>{{email}}</td>
+                                        <td>
+                                            {{#if status}}
+                                                <div class="badge badge-inverse-success"> normal </div>
+                                            {{else}}
+                                                <div class="badge badge-inverse-success"> locked </div>
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="mdi mdi-earth"></i>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
+                                                    <h6 class="dropdown-header">Settings</h6>
+                                                    <a class="dropdown-item" href="/admin/userProfile/{{_id}}">View</a>
+                                                    <a class="dropdown-item" href="/admin/updateProfile/{{_id}}">Edit</a>
+                                                    <a class="dropdown-item" href="/admin/user/delete/{{_id}}">Delete</a>
+                                                    <a class="dropdown-item" href="/admin/user/lock/{{_id}}">Lock</a>
+                                                    <a class="dropdown-item" href="/admin/user/unlock/{{_id}}">Unlock</a>>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <a class="text-black mt-3 d-block pl-4" href="admin/user">
+                        <span class="font-weight-medium h6">View all users</span>
+                        <i class="mdi mdi-chevron-right"></i></a>
+                </div>
+            </div>
         </div>
+        <!--        <div class="col-xl-4 col-sm-6 grid-margin stretch-card">-->
+        <!--            <div class="card">-->
+        <!--                <div class="card-body">-->
+        <!--                    <div class="card-title font-weight-medium"> Business Survey </div>-->
+        <!--                    <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we find a new solution </p>-->
+        <!--                    <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">-->
+        <!--                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_3.jpg" alt="" />-->
+        <!--                        <div class="pt-2">-->
+        <!--                            <h5 class="mb-0">Villa called Archagel</h5>-->
+        <!--                            <p class="mb-0 text-muted">St, San Diego, CA</p>-->
+        <!--                            <h5 class="mb-0">$600/mo</h5>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">-->
+        <!--                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_1.jpg" alt="" />-->
+        <!--                        <div class="pt-2">-->
+        <!--                            <h5 class="mb-0">Luxury villa in Hermo</h5>-->
+        <!--                            <p class="mb-0 text-muted">Glendale, CA</p>-->
+        <!--                            <h5 class="mb-0">$900/mo</h5>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">-->
+        <!--                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_2.jpg" alt="" />-->
+        <!--                        <div class="pt-2">-->
+        <!--                            <h5 class="mb-0">House on the Clarita</h5>-->
+        <!--                            <p class="mb-0 text-muted">Business Survey</p>-->
+        <!--                            <h5 class="mb-0">$459/mo</h5>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <a class="text-black mt-3 d-block font-weight-medium h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
 
+<!--    Manage movies-->
     <div class="row">
         <div class="col-xl-12 col-sm-12 grid-margin stretch-card">
             <div class="card">
@@ -91,456 +195,253 @@
 <!--            </div>-->
 <!--        </div>-->
     </div>
-    <div class="row">
-        <div class="col-xl-8 col-sm-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body px-0 overflow-auto">
-                    <h4 class="card-title pl-4">
-                        Manage customers
-                        <button type="button" href="/form" class="btn btn-sm ml-3 btn-success"> Add User </button>
-                    </h4>
+<!--    <div class="row">-->
 
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="bg-light">
-                            <tr>
-                                <th>Customer</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng8Jejbfct93auTLtTP08eTd5yXV_j_dh0Q&usqp=CAU" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                            <small> Online</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Cooper123@gmail.com</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> Normal </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-earth"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                            <h6 class="dropdown-header">Settings</h6>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                            <a class="dropdown-item" href="#">Ban/Unban</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng8Jejbfct93auTLtTP08eTd5yXV_j_dh0Q&usqp=CAU" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                            <small> Online</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Cooper123@gmail.com</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> Normal </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-earth"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                            <h6 class="dropdown-header">Settings</h6>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                            <a class="dropdown-item" href="#">Ban/Unban</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng8Jejbfct93auTLtTP08eTd5yXV_j_dh0Q&usqp=CAU" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                            <small> Online</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Cooper123@gmail.com</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> Normal </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-earth"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                            <h6 class="dropdown-header">Settings</h6>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                            <a class="dropdown-item" href="#">Ban/Unban</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng8Jejbfct93auTLtTP08eTd5yXV_j_dh0Q&usqp=CAU" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                            <small> Online</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Cooper123@gmail.com</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> Normal </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-earth"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                            <h6 class="dropdown-header">Settings</h6>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                            <a class="dropdown-item" href="#">Ban/Unban</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng8Jejbfct93auTLtTP08eTd5yXV_j_dh0Q&usqp=CAU" alt="image" />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                            <small> Online</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Cooper123@gmail.com</td>
-                                <td>
-                                    <div class="badge badge-inverse-success"> Normal </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-earth"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                            <h6 class="dropdown-header">Settings</h6>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                            <a class="dropdown-item" href="#">Ban/Unban</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <a class="text-black mt-3 d-block pl-4" href="#">
-                        <span class="font-weight-medium h6">View all users</span>
-                        <i class="mdi mdi-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title font-weight-medium"> Business Survey </div>
-                    <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we find a new solution </p>
-                    <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
-                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_3.jpg" alt="" />
-                        <div class="pt-2">
-                            <h5 class="mb-0">Villa called Archagel</h5>
-                            <p class="mb-0 text-muted">St, San Diego, CA</p>
-                            <h5 class="mb-0">$600/mo</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_1.jpg" alt="" />
-                        <div class="pt-2">
-                            <h5 class="mb-0">Luxury villa in Hermo</h5>
-                            <p class="mb-0 text-muted">Glendale, CA</p>
-                            <h5 class="mb-0">$900/mo</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                        <img class="survey-img mb-lg-3" src="/assets/images/dashboard/img_2.jpg" alt="" />
-                        <div class="pt-2">
-                            <h5 class="mb-0">House on the Clarita</h5>
-                            <p class="mb-0 text-muted">Business Survey</p>
-                            <h5 class="mb-0">$459/mo</h5>
-                        </div>
-                    </div>
-                    <a class="text-black mt-3 d-block font-weight-medium h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
+<!--        <div class="col-xl-4 col-md-6 grid-margin stretch-card">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h4 class="card-title text-black">Recent Customers</h4>-->
+<!--                    <p class="text-muted">All contacts</p>-->
+<!--                    <div class="row pt-2 pb-1">-->
+<!--                        <div class="col-12 col-sm-7">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4 col-md-4">-->
+<!--                                    <img class="customer-img" src="/assets/images/faces/face22.jpg" alt="" />-->
+<!--                                </div>-->
+<!--                                <div class="col-8 col-md-8 p-sm-0">-->
+<!--                                    <h6 class="mb-0">Cecelia Cooper</h6>-->
+<!--                                    <p class="text-muted font-12">05:58AM</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-5 pl-0">-->
+<!--                            <canvas id="areaChart1"></canvas>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row py-1">-->
+<!--                        <div class="col-sm-7">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4 col-sm-4">-->
+<!--                                    <img class="customer-img" src="/assets/images/faces/face25.jpg" alt="" />-->
+<!--                                </div>-->
+<!--                                <div class="col-8 col-sm-8 p-sm-0">-->
+<!--                                    <h6 class="mb-0">Victor Watkins</h6>-->
+<!--                                    <p class="text-muted font-12">05:28AM</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-5 pl-0">-->
+<!--                            <canvas id="areaChart2"></canvas>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row py-1">-->
+<!--                        <div class="col-sm-7">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4 col-sm-4">-->
+<!--                                    <img class="customer-img" src="/assets/images/faces/face15.jpg" alt="" />-->
+<!--                                </div>-->
+<!--                                <div class="col-8 col-sm-8 p-sm-0">-->
+<!--                                    <h6 class="mb-0">Ada Burgess</h6>-->
+<!--                                    <p class="text-muted font-12">05:57AM</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-5 pl-0">-->
+<!--                            <canvas id="areaChart3"></canvas>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row py-1">-->
+<!--                        <div class="col-sm-7">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4 col-sm-4">-->
+<!--                                    <img class="customer-img" src="/assets/images/faces/face5.jpg" alt="" />-->
+<!--                                </div>-->
+<!--                                <div class="col-8 col-sm-8 p-sm-0">-->
+<!--                                    <h6 class="mb-0">Dollie Lynch</h6>-->
+<!--                                    <p class="text-muted font-12">05:59AM</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-5 pl-0">-->
+<!--                            <canvas id="areaChart4"></canvas>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-sm-7">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4 col-sm-4">-->
+<!--                                    <img class="customer-img" src="/assets/images/faces/face2.jpg" alt="" />-->
+<!--                                </div>-->
+<!--                                <div class="col-8 col-sm-8 p-sm-0">-->
+<!--                                    <h6 class="mb-0">Harry Holloway</h6>-->
+<!--                                    <p class="text-muted font-12 mb-0">05:13AM</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-5 pl-0">-->
+<!--                            <canvas id="areaChart5" height="100"></canvas>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-xl-4 col-md-6 grid-margin stretch-card">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h4 class="card-title text-black">Business Survey</h4>-->
+<!--                    <p class="text-muted pb-2">Jan 01 2019 - Dec 31 2019</p>-->
+<!--                    <canvas id="surveyBar"></canvas>-->
+<!--                    <div class="row border-bottom pb-3 pt-4 align-items-center mx-0">-->
+<!--                        <div class="col-sm-9 pl-0">-->
+<!--                            <div class="d-flex">-->
+<!--                                <img src="/assets/images/dashboard/img_4.jpg" alt="" />-->
+<!--                                <div class="pl-2">-->
+<!--                                    <h6 class="m-0">Red Chair</h6>-->
+<!--                                    <p class="m-0">Home Decoration</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-3 pl-0 pl-sm-3">-->
+<!--                            <div class="badge badge-inverse-success mt-3 mt-sm-0"> +7.7% </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row py-3 align-items-center mx-0">-->
+<!--                        <div class="col-sm-9 pl-0">-->
+<!--                            <div class="d-flex">-->
+<!--                                <img src="/assets/images/dashboard/img_5.jpg" alt="" />-->
+<!--                                <div class="pl-2">-->
+<!--                                    <h6 class="m-0">Gray Sofa</h6>-->
+<!--                                    <p class="m-0">Home Decoration</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-3 pl-0 pl-sm-3">-->
+<!--                            <div class="badge badge-inverse-success mt-3 mt-sm-0"> +7.7% </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-xl-4 grid-margin stretch-card">-->
+<!--            &lt;!&ndash;activity&ndash;&gt;-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h4 class="card-title">-->
+<!--                      <span class="d-flex justify-content-between">-->
+<!--                        <span>Activity</span>-->
+<!--                        <span class="dropdown dropleft d-block">-->
+<!--                          <span id="dropdownMenuButton1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
+<!--                            <span><i class="mdi mdi-dots-horizontal"></i></span>-->
+<!--                          </span>-->
+<!--                          <span class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
+<!--                            <a class="dropdown-item" href="#">Contact</a>-->
+<!--                            <a class="dropdown-item" href="#">Helpdesk</a>-->
+<!--                            <a class="dropdown-item" href="#">Chat with us</a>-->
+<!--                          </span>-->
+<!--                        </span>-->
+<!--                      </span>-->
+<!--                    </h4>-->
+<!--                    <ul class="gradient-bullet-list border-bottom">-->
+<!--                        <li>-->
+<!--                            <h6 class="mb-0"> It's awesome when we find a new solution </h6>-->
+<!--                            <p class="text-muted">2h ago</p>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h6 class="mb-0">Report has been updated</h6>-->
+<!--                            <p class="text-muted">-->
+<!--                                <span>2h ago</span>-->
+<!--                                <span class="d-inline-block">-->
+<!--                            <span class="d-flex d-inline-block">-->
+<!--                              <img class="ml-1" src="/assets/images/faces/face1.jpg" alt="" />-->
+<!--                              <img class="ml-1" src="/assets/images/faces/face10.jpg" alt="" />-->
+<!--                              <img class="ml-1" src="/assets/images/faces/face14.jpg" alt="" />-->
+<!--                            </span>-->
+<!--                          </span>-->
+<!--                            </p>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h6 class="mb-0"> Analytics dashboard has been created#Slack </h6>-->
+<!--                            <p class="text-muted">2h ago</p>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <h6 class="mb-0"> It's awesome when we find a new solution </h6>-->
+<!--                            <p class="text-muted">2h ago</p>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <a class="text-black mt-3 mb-0 d-block h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;activity ends&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col-xl-8 grid-margin stretch-card">-->
+<!--            <div class="card card-calender">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="row pt-4">-->
+<!--                        <div class="col-sm-6">-->
+<!--                            <h1 class="text-white">10:16PM</h1>-->
+<!--                            <h5 class="text-white">Monday 25 October, 2016</h5>-->
+<!--                            <h5 class="text-white pt-2 m-0">Precipitation:50%</h5>-->
+<!--                            <h5 class="text-white m-0">Humidity:23%</h5>-->
+<!--                            <h5 class="text-white m-0">Wind:13 km/h</h5>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-6 text-sm-right pt-3 pt-sm-0">-->
+<!--                            <h3 class="text-white">Clear Sky</h3>-->
+<!--                            <p class="text-white m-0">London, UK</p>-->
+<!--                            <h3 class="text-white m-0">21°C</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row mt-5">-->
+<!--                        <div class="col-sm-12">-->
+<!--                            <ul class="d-flex pl-0 overflow-auto">-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center active">-->
+<!--                                    <p class="mb-0">TODAY</p>-->
+<!--                                    <i class="mdi mdi-weather-cloudy"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">MON</p>-->
+<!--                                    <i class="mdi mdi-weather-hail"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">TUE</p>-->
+<!--                                    <i class="mdi mdi-weather-cloudy"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">WED</p>-->
+<!--                                    <i class="mdi mdi-weather-fog"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">THU</p>-->
+<!--                                    <i class="mdi mdi-weather-hail"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">FRI</p>-->
+<!--                                    <i class="mdi mdi-weather-cloudy"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">SAT</p>-->
+<!--                                    <i class="mdi mdi-weather-hail"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                                <li class="weakly-weather-item text-white font-weight-medium text-center">-->
+<!--                                    <p class="mb-0">SUN</p>-->
+<!--                                    <i class="mdi mdi-weather-cloudy"></i>-->
+<!--                                    <p class="mb-0">21<span class="symbol">°c</span></p>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="col-xl-4 col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-black">Recent Customers</h4>
-                    <p class="text-muted">All contacts</p>
-                    <div class="row pt-2 pb-1">
-                        <div class="col-12 col-sm-7">
-                            <div class="row">
-                                <div class="col-4 col-md-4">
-                                    <img class="customer-img" src="/assets/images/faces/face22.jpg" alt="" />
-                                </div>
-                                <div class="col-8 col-md-8 p-sm-0">
-                                    <h6 class="mb-0">Cecelia Cooper</h6>
-                                    <p class="text-muted font-12">05:58AM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 pl-0">
-                            <canvas id="areaChart1"></canvas>
-                        </div>
-                    </div>
-                    <div class="row py-1">
-                        <div class="col-sm-7">
-                            <div class="row">
-                                <div class="col-4 col-sm-4">
-                                    <img class="customer-img" src="/assets/images/faces/face25.jpg" alt="" />
-                                </div>
-                                <div class="col-8 col-sm-8 p-sm-0">
-                                    <h6 class="mb-0">Victor Watkins</h6>
-                                    <p class="text-muted font-12">05:28AM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 pl-0">
-                            <canvas id="areaChart2"></canvas>
-                        </div>
-                    </div>
-                    <div class="row py-1">
-                        <div class="col-sm-7">
-                            <div class="row">
-                                <div class="col-4 col-sm-4">
-                                    <img class="customer-img" src="/assets/images/faces/face15.jpg" alt="" />
-                                </div>
-                                <div class="col-8 col-sm-8 p-sm-0">
-                                    <h6 class="mb-0">Ada Burgess</h6>
-                                    <p class="text-muted font-12">05:57AM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 pl-0">
-                            <canvas id="areaChart3"></canvas>
-                        </div>
-                    </div>
-                    <div class="row py-1">
-                        <div class="col-sm-7">
-                            <div class="row">
-                                <div class="col-4 col-sm-4">
-                                    <img class="customer-img" src="/assets/images/faces/face5.jpg" alt="" />
-                                </div>
-                                <div class="col-8 col-sm-8 p-sm-0">
-                                    <h6 class="mb-0">Dollie Lynch</h6>
-                                    <p class="text-muted font-12">05:59AM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 pl-0">
-                            <canvas id="areaChart4"></canvas>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <div class="row">
-                                <div class="col-4 col-sm-4">
-                                    <img class="customer-img" src="/assets/images/faces/face2.jpg" alt="" />
-                                </div>
-                                <div class="col-8 col-sm-8 p-sm-0">
-                                    <h6 class="mb-0">Harry Holloway</h6>
-                                    <p class="text-muted font-12 mb-0">05:13AM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 pl-0">
-                            <canvas id="areaChart5" height="100"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-black">Business Survey</h4>
-                    <p class="text-muted pb-2">Jan 01 2019 - Dec 31 2019</p>
-                    <canvas id="surveyBar"></canvas>
-                    <div class="row border-bottom pb-3 pt-4 align-items-center mx-0">
-                        <div class="col-sm-9 pl-0">
-                            <div class="d-flex">
-                                <img src="/assets/images/dashboard/img_4.jpg" alt="" />
-                                <div class="pl-2">
-                                    <h6 class="m-0">Red Chair</h6>
-                                    <p class="m-0">Home Decoration</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 pl-0 pl-sm-3">
-                            <div class="badge badge-inverse-success mt-3 mt-sm-0"> +7.7% </div>
-                        </div>
-                    </div>
-                    <div class="row py-3 align-items-center mx-0">
-                        <div class="col-sm-9 pl-0">
-                            <div class="d-flex">
-                                <img src="/assets/images/dashboard/img_5.jpg" alt="" />
-                                <div class="pl-2">
-                                    <h6 class="m-0">Gray Sofa</h6>
-                                    <p class="m-0">Home Decoration</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 pl-0 pl-sm-3">
-                            <div class="badge badge-inverse-success mt-3 mt-sm-0"> +7.7% </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 grid-margin stretch-card">
-            <!--activity-->
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">
-                      <span class="d-flex justify-content-between">
-                        <span>Activity</span>
-                        <span class="dropdown dropleft d-block">
-                          <span id="dropdownMenuButton1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span><i class="mdi mdi-dots-horizontal"></i></span>
-                          </span>
-                          <span class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="#">Contact</a>
-                            <a class="dropdown-item" href="#">Helpdesk</a>
-                            <a class="dropdown-item" href="#">Chat with us</a>
-                          </span>
-                        </span>
-                      </span>
-                    </h4>
-                    <ul class="gradient-bullet-list border-bottom">
-                        <li>
-                            <h6 class="mb-0"> It's awesome when we find a new solution </h6>
-                            <p class="text-muted">2h ago</p>
-                        </li>
-                        <li>
-                            <h6 class="mb-0">Report has been updated</h6>
-                            <p class="text-muted">
-                                <span>2h ago</span>
-                                <span class="d-inline-block">
-                            <span class="d-flex d-inline-block">
-                              <img class="ml-1" src="/assets/images/faces/face1.jpg" alt="" />
-                              <img class="ml-1" src="/assets/images/faces/face10.jpg" alt="" />
-                              <img class="ml-1" src="/assets/images/faces/face14.jpg" alt="" />
-                            </span>
-                          </span>
-                            </p>
-                        </li>
-                        <li>
-                            <h6 class="mb-0"> Analytics dashboard has been created#Slack </h6>
-                            <p class="text-muted">2h ago</p>
-                        </li>
-                        <li>
-                            <h6 class="mb-0"> It's awesome when we find a new solution </h6>
-                            <p class="text-muted">2h ago</p>
-                        </li>
-                    </ul>
-                    <a class="text-black mt-3 mb-0 d-block h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>
-                </div>
-            </div>
-            <!--activity ends-->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-8 grid-margin stretch-card">
-            <div class="card card-calender">
-                <div class="card-body">
-                    <div class="row pt-4">
-                        <div class="col-sm-6">
-                            <h1 class="text-white">10:16PM</h1>
-                            <h5 class="text-white">Monday 25 October, 2016</h5>
-                            <h5 class="text-white pt-2 m-0">Precipitation:50%</h5>
-                            <h5 class="text-white m-0">Humidity:23%</h5>
-                            <h5 class="text-white m-0">Wind:13 km/h</h5>
-                        </div>
-                        <div class="col-sm-6 text-sm-right pt-3 pt-sm-0">
-                            <h3 class="text-white">Clear Sky</h3>
-                            <p class="text-white m-0">London, UK</p>
-                            <h3 class="text-white m-0">21°C</h3>
-                        </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-sm-12">
-                            <ul class="d-flex pl-0 overflow-auto">
-                                <li class="weakly-weather-item text-white font-weight-medium text-center active">
-                                    <p class="mb-0">TODAY</p>
-                                    <i class="mdi mdi-weather-cloudy"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">MON</p>
-                                    <i class="mdi mdi-weather-hail"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">TUE</p>
-                                    <i class="mdi mdi-weather-cloudy"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">WED</p>
-                                    <i class="mdi mdi-weather-fog"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">THU</p>
-                                    <i class="mdi mdi-weather-hail"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">FRI</p>
-                                    <i class="mdi mdi-weather-cloudy"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">SAT</p>
-                                    <i class="mdi mdi-weather-hail"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                                <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                    <p class="mb-0">SUN</p>
-                                    <i class="mdi mdi-weather-cloudy"></i>
-                                    <p class="mb-0">21<span class="symbol">°c</span></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+<!--    </div>-->
 
 </div>
