@@ -13,8 +13,18 @@ exports.home = async function (req, res) {
 
 exports.item = async function (req, res) {
     let movie;
+    let comments;
     try {
       movie = await movieService.viewOne(req.params.id);
+      comments = await movieService.findComments(req.params.id);
     } catch (err) {}
-    res.render("movie/views/review", { movie });
+    res.render("movie/views/review", { movie ,comments});
 };
+
+exports.postComment = async function (req,res){
+    if (!req.user){
+        return res.redirect("/auth/login");
+    }
+    let comment = await movieService.postComment(req.user,req.params.id, req.body.content);
+    res.redirect("/movie/review/" + req.params.id);
+}

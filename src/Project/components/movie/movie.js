@@ -5,5 +5,5 @@ const movieController = require("./movieController");
 
 
 router.get("/review/:id", movieController.item);
-
+router.post("/review/:id/comment", movieController.postComment);
 module.exports = router;

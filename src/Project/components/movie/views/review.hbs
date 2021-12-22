@@ -68,6 +68,24 @@
                             </div>
                             <div class="blog__details__comment">
                                 <h4>3 Comments</h4>
+                                {{#each comments}}
+                                    <div class="blog__details__comment__item">
+                                        <div class="blog__details__comment__item__pic">
+                                            {{#if this.userImg}}
+                                                <img src={{this.userImg}} alt="" class = "commentImg">
+                                            {{else}}
+                                                <img src="/img/blog/details/avatar.jpg" alt="" class = "commentImg">
+                                            {{/if}}
+                                        </div>
+                                        <div class="blog__details__comment__item__text">
+                                            <span>{{this.createdDay}}</span>
+                                            <h5>{{this.userName}}</h5>
+                                            <p>{{this.content}}</p>
+                                            <a href="#">Like</a>
+                                            <a href="#">Reply</a>
+                                        </div>
+                                    </div>
+                                {{/each}}
                                 <div class="blog__details__comment__item">
                                     <div class="blog__details__comment__item__pic">
                                         <img src="/img/blog/details/comment-1.png" alt="">
@@ -109,18 +127,12 @@
                                 </div>
                             </div>
                             <div class="blog__details__form">
-                                <h4>Leave A Commnet</h4>
-                                <form action="#">
+                                <h4>Leave A Comment</h4>
+                                <form action="/movie/review/{{movie._id}}/comment" method ="post" >
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <input type="text" placeholder="Name">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <input type="text" placeholder="Email">
-                                        </div>
                                         <div class="col-lg-12">
-                                            <textarea placeholder="Message"></textarea>
-                                            <button type="submit" class="site-btn">Send Message</button>
+                                            <textarea placeholder="Content" id="content" name = "content"></textarea>
+                                            <button type="submit" class="site-btn">Comment</button>
                                         </div>
                                     </div>
                                 </form>
