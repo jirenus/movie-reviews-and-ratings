@@ -1,5 +1,5 @@
 const movieModel = require("../movie/movieModel");
-const userModel = require('../auth/userModel');
+const userModel = require('../auth/models/userModel');
 const bcrypt = require("bcrypt");
 
 exports.getUserList = async ()=>{

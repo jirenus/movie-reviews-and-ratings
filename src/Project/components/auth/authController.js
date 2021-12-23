@@ -55,3 +55,8 @@ exports.register = async (req, res) => {
         res.redirect('/auth/login');
     }
 }
+exports.addToFavorite = async (req, res) => {
+    const movieID = req.body.movieID;
+    await authService.addToFavorite(movieID, req.user._id);
+    res.redirect('/movie/review/' + movieID);
+}

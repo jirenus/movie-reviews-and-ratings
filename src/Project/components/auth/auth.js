@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const authController = require('./authController');
 const passport = require("../../utils/passport");
-
+const guard  = require('../../utils/authenticateGuard');
 router.get('/login', authController.getLoginPage);
 router.get('/register', authController.getRegisterPage);
 router.post('/register', authController.register);
 router.post('/login', authController.verifyAccount);
 router.get('/logout', authController.logout);
+router.post('/addToFavorite', guard.loggedInUserGuard, authController.addToFavorite);
 module.exports = router;

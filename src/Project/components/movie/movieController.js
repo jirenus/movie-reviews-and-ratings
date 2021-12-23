@@ -1,6 +1,7 @@
 const movieService = require("./movieService");
 const { ObjectId } = require("mongodb");
 const { application } = require("express");
+const authService = require('../auth/authService');
 exports.home = async function (req, res) {
   const movies = await movieService.listMovies({});
 
@@ -17,6 +18,9 @@ exports.item = async function (req, res) {
     try {
       movie = await movieService.viewOne(req.params.id);
       comments = await movieService.findComments(req.params.id);
+      if (req.user){
+          await authService.saveToHistory(req.user._id, req.params.id);
+      }
     } catch (err) {}
     res.render("movie/views/review", { movie ,comments});
 };
