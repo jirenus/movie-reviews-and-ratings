@@ -1,5 +1,6 @@
 const siteRouter = require('../components/site/site');
 const authRouter = require('../components/auth/auth');
+const userRouter = require('../components/user/user');
 const listRouter = require('../components/list/list');
 const movieRouter = require('../components/movie/movie');
 const adminRouter = require('../components/admin/admin');
@@ -11,6 +12,7 @@ const createError = require("http-errors");
 function route(app){
     app.use('/auth', authRouter);
     app.use('/admin', guard.loggedInAdminGuard, adminRouter);
+    app.use('/user', guard.loggedInUserGuard, userRouter);
     app.use("/review", express.static(path.join(__dirname, "public")));
     app.use('/list', listRouter);
     app.use('/movie', movieRouter);
