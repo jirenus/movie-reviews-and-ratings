@@ -95,17 +95,19 @@
                                             <li><a href="#">Profile</a></li>
                                             <li><a href="/admin">Dashboard</a></li>
                                         {{else}}
-                                            <li><a href="#">Profile</a></li>
+                                            <li><a href="/user/profile/{{user._id}}">Profile</a></li>
                                             <li><a href="#">History</a></li>
                                             <li><a href="#">Report to admin</a></li>
                                         {{/if}}
-                                        <li class="border-top"><a href="/auth/logout">Logout</a></li>
                                     </ul>
                                 {{else}}
                                     <a href="/auth/login"><span class="icon_profile"></span> Login</a>
                                 {{/if}}
 
                             </li>
+                            {{#if user}}
+                                <li class="border-top"><a href="/auth/logout">Logout</a></li>
+                            {{/if}}
                         </ul>
                     </nav>
                 </div>
