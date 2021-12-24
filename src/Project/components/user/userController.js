@@ -1,10 +1,14 @@
 const userService = require('./userService');
+const authService = require('../auth/authService');
 
 class UserController {
     /* GET User profile page. */
     async getProfilePage(req, res, next) {
         const user = await userService.getOneUser(req.params.id);
-        res.render('user/views/profile',{user});
+        const favoriteMovies = await authService.getFavoriteList(req.params.id);
+        const historyMovies = await authService.getHistoryList(req.params.id);
+
+        res.render('user/views/profile',{user, favoriteMovies, historyMovies});
     }
 
     async getEditProfilePage(req, res, next) {
