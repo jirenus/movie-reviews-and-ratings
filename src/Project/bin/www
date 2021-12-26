@@ -6,7 +6,7 @@
 const monoogse = require("mongoose");
 const dotev = require("dotenv");
 
-dotev.config({ path: "./config.evn" });
+dotev.config({ path: "./.env" });
 /**
  * Get port from environment and store in Express.
  */
