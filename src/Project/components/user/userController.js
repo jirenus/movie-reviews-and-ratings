@@ -2,6 +2,12 @@ const userService = require('./userService');
 const authService = require('../auth/authService');
 
 class UserController {
+    async sendReport(req, res){
+        const username = req.query.username;
+        const sentReport = await userService.sendReport(req.query);
+        res.render('../views/thanksPage', {username});
+    }
+
     /* GET User profile page. */
     async getProfilePage(req, res, next) {
         const user = await userService.getOneUser(req.params.id);

@@ -1,5 +1,6 @@
 const movieModel = require("../movie/movieModel");
 const userModel = require('../auth/models/userModel');
+const reportModel = require('../report/reportModel');
 const bcrypt = require("bcrypt");
 
 exports.getUserList = async ()=>{
@@ -45,6 +46,18 @@ exports.unlockUser = async (userID) =>{
     const result = await userModel.updateOne({ _id: userID },
         { $set: {status: Boolean(true)}});
     return result;
+}
+
+// Report list
+exports.getReportPage = async ()=>{
+    const reportList = await reportModel.find().lean();
+    return reportList;
+}
+
+exports.deleteReport = async (reportID) => {
+    let deletedUser = null;
+    deletedUser = await reportModel.deleteOne({_id: reportID});
+    return deletedUser;
 }
 
 exports.getMovieList = async ()=>{

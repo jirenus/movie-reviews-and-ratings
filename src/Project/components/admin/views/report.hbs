@@ -1,0 +1,36 @@
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Reports</h4>
+
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Message</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each reportList}}
+                        {{#if userType}}
+                        {{else}}
+                            <tr>
+                                <td>{{username}}</td>
+                                <td>{{message}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-warning" type="button"><a class="btn" href="/admin/report/delete/{{_id}}">Delete</a></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        {{/if}}
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

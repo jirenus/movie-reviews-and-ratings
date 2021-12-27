@@ -11,8 +11,8 @@ const createError = require("http-errors");
 
 function route(app){
     app.use('/auth', authRouter);
-    app.use('/admin', guard.loggedInAdminGuard, adminRouter);
     app.use('/user', guard.loggedInUserGuard, userRouter);
+    app.use('/admin', guard.loggedInAdminGuard, adminRouter);
     app.use("/review", express.static(path.join(__dirname, "public")));
     app.use('/list', listRouter);
     app.use('/movie', movieRouter);

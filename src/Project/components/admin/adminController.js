@@ -51,6 +51,16 @@ class AdminController {
         res.redirect('/admin/user');
     }
 
+    async getReportPage(req, res, next) {
+        const reportList = await adminService.getReportPage();
+        res.render('admin/views/report',{layout:'adminLayout.hbs', reportList});
+    }
+
+    async deleteReport(req, res) {
+        const reportID = req.params.id;
+        const deletedReport = await adminService.deleteReport(reportID);
+        res.redirect('/admin/report');
+    }
 
 
     /* GET movie page. */

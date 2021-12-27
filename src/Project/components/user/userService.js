@@ -1,5 +1,20 @@
 const userModel = require('../auth/models/userModel');
 const bcrypt = require('bcrypt');
+const reportModel = require('../report/reportModel');
+
+exports.sendReport = async (report) =>{
+    const newReport = new reportModel({
+        userId: report.userId,
+        username: report.username,
+        message: report.message
+    });
+    try{
+        const savedReport = await newReport.save();
+        return savedReport;
+    }catch (err){
+        console.log(err);
+    }
+}
 
 exports.getOneUser = async (id) =>{
     const user = await userModel.findById(id).lean();

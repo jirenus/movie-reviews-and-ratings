@@ -67,9 +67,10 @@
                                 </li>
                             {{/if}}
                             <li>
-                                <a href="/list/categories?genre=adventure&page=1"
-                                >Categories <span class="arrow_carrot-down"></span
-                                ></a>
+                                <a href="/list/categories?genre=adventure&page=1">
+                                    Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </a>
                                 <ul class="dropdown">
                                     <li><a href="/list/categories?genre=adventure&page=1">Adventure</a></li>
                                     <li><a href="/list/categories?genre=horror&page=1">Horror</a></li>
@@ -80,14 +81,22 @@
                                 </ul>
                             </li>
                             <li><a href="#">About</a></li>
-                            <li style="padding-left: 50px">
+                            {{#if user.userType}}
+
+                            {{else}}
+                                <li><a href="#" data-toggle="modal" data-target="#reportModal">Report</a></li>
+                            {{/if}}
+                            <li style="padding-left: 10px">
                                 <a href="#" class="search-switch"><span class="icon_search"></span></a>
                             </li>
+                            {{#if user}}
+
+                            {{/if}}
                             <li>
                                 {{#if user}}
                                     <a href="#">
                                         <span class="icon_profile"></span>
-                                        Hello {{user.name}}
+                                        Hello {{user.username}}
                                         <span class="arrow_carrot-down"></span>
                                     </a>
                                     <ul class="dropdown">
@@ -97,7 +106,6 @@
                                         {{else}}
                                             <li><a href="/user/profile/{{user._id}}">Profile</a></li>
                                             <li><a href="#">History</a></li>
-                                            <li><a href="#">Report to admin</a></li>
                                         {{/if}}
                                     </ul>
                                 {{else}}
@@ -114,6 +122,9 @@
             </div>
         </div>
         <div id="mobile-menu-wrap"></div>
+        {{#if sentReport}}
+            <a>Sent report</a>
+        {{/if}}
     </div>
 </header>
 <!-- Header End -->
@@ -174,6 +185,41 @@
     </div>
 </div>
 <!-- Search model end -->
+
+<!-- Modal: modalPoll -->
+<div class="modal fade right" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+        <form action="/user/report" method="get">
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header"><p class="heading lead">Report</p></div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="text-center"><strong>Content</strong></p>
+                    <!--Basic textarea-->
+                    <input type="hidden" id="userId" name="userId" value="{{user._id}}">
+                    <input type="hidden" id="username" name="username" value="{{user.username}}">
+                    <div class="md-form">
+                        <textarea type="text" id="form79textarea" name="message" class="md-textarea form-control" rows="7"></textarea>
+                    </div>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                        Send
+                        <i class="fa fa-paper-plane ml-1"></i>
+                    </button>
+                    <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal: modalPoll -->
 
 <!-- Js Plugins -->
 <script src="/js/jquery-3.3.1.min.js"></script>

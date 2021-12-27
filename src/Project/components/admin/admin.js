@@ -7,6 +7,8 @@ router.get('/', adminController.getDashboardPage);
 
 /* GET user list page. */
 router.get('/user', adminController.getUserPage);
+router.get('/report', adminController.getReportPage);
+router.get('/report/delete/:id', adminController.deleteReport);
 
 /* GET User profile page. */
 router.get('/userProfile/:id', adminController.getProfilePage);
