@@ -19,6 +19,9 @@ const movieSchema = new mongoose.Schema({
   update: {
     type: "string",
     default: "new"
+  },
+  ratings:{
+    type: "array"
   }
 });
 const movie = mongoose.model("Movie", movieSchema);

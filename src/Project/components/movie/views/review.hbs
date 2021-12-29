@@ -1,153 +1,211 @@
+<!-- Blog Details Section Begin -->
+<section class="blog-details spad">
+    <div class="container">
 
-    <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
-        <div class="container">
-          
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <div class="blog__details__title">
-                        <h6>Action, Magic <span>- March 08, 2020</span></h6>
-                        <h2>Anime for Beginners: 20 Pieces of Essential Viewing</h2>
-                        <div class="blog__details__social">
-                            <a href="#" class="facebook"><i class="fa fa-facebook-square"></i> Facebook</a>
-                            <a href="#" class="pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
-                            <a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i> Linkedin</a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter-square"></i> Twitter</a>
-                        </div>
-                        {{#if user}}
-                            <form action="/auth/addToFavorite" method="post" class="pt-4">
-                                <input type="hidden" value="{{movie._id}}" name="movieID">
-                                <button class="site-btn" type="submit">
-                                    <i class="fa fa-heart"></i>
-                                    Add to favorite list
-                                </button>
-                            </form>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+                <div class="blog__details__title">
+                    <h6>Action, Magic <span>- March 08, 2020</span></h6>
+                    <h2>Anime for Beginners: 20 Pieces of Essential Viewing</h2>
+                    <div class="blog__details__social">
+                        <a href="#" class="facebook"><i class="fa fa-facebook-square"></i> Facebook</a>
+                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
+                        <a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i> Linkedin</a>
+                        <a href="#" class="twitter"><i class="fa fa-twitter-square"></i> Twitter</a>
+                    </div>
+
+                    <div class='rating-stars justify-content-center'>
+                        <h2>Ratings</h2>
+                        {{#if announcement}}
+                            <ul>
+                                {{#each rated}}
+                                    <li class='star'>
+                                        <i class='fa fa-star fa-fw' style="color:#FFCC36;"></i>
+                                    </li>
+                                {{/each}}
+                                {{#each unrated}}
+                                    <li class='star'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{else}}
+                            <h6 style="padding-top: 10px">No rating already!!!</h6>
                         {{/if}}
                     </div>
+
+
+                    {{#if user}}
+                        <form action="/auth/addToFavorite" method="post" class="pt-4">
+                            <input type="hidden" value="{{movie._id}}" name="movieID">
+                            <button class="site-btn" type="submit">
+                                <i class="fa fa-heart"></i>
+                                Add to favorite list
+                            </button>
+                        </form>
+                    {{/if}}
                 </div>
-                <div class="col-lg-12">
-                    <div class="blog__details__pic">
-                        <img src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.15752-9/263739017_299936855390366_5866291656539696456_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=bbvkbly6MGcAX-OHXJx&_nc_ht=scontent.fsgn5-3.fna&oh=03_AVKxvjKCveyMbBbzDs3t6mAFobX0RdA6pLwMl2jnDbYO6A&oe=61DC4310" alt="">
+            </div>
+            <div class="col-lg-12">
+                <div class="blog__details__pic">
+                    <img src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.15752-9/263739017_299936855390366_5866291656539696456_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=bbvkbly6MGcAX-OHXJx&_nc_ht=scontent.fsgn5-3.fna&oh=03_AVKxvjKCveyMbBbzDs3t6mAFobX0RdA6pLwMl2jnDbYO6A&oe=61DC4310"
+                         alt="">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="blog__details__content">
+                    <div class="blog__details__text">
+                        <p>{{movie.intro}}</p>
                     </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="blog__details__content">
-                        <div class="blog__details__text">
-                            <p>{{movie.intro}}</p>
-                        </div>
-                          <div class="anime__video__player">
-                             
-                                  <iframe  width="750" height="500" src={{movie.trailer}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                  <track kind="captions" label="English captions" src="#" srclang="en" default />
-                          </div>
-                        <div class="blog__details__item__text">
-                            <img src="{{movie.images.[0]}}" alt="">
-                            <p>{{movie.description1}}</p>
-                        </div>
-                        <div class="blog__details__item__text">
-                            <img src="{{movie.images.[1]}}" alt="">
-                            <p>{{movie.description2}}</p>
-                        </div>
-                        <div class="blog__details__item__text">
-                            <img src="{{movie.images.[2]}}" alt="">
-                            <p>{{movie.description3}}</p>
-                            <img src="{{movie.images.[3]}}" alt="">
-                        </div>
-                        <div class="blog__details__tags">
-                            <a href="#">Healthfood</a>
-                            <a href="#">Sport</a>
-                            <a href="#">Game</a>
-                        </div>
-                        <div class="blog__details__btns">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="blog__details__btns__item">
-                                        <h5><a href="#"><span class="arrow_left"></span> Building a Better LiA...</a>
-                                        </h5>
-                                    </div>
+                    <div class="anime__video__player">
+
+                        <iframe width="750" height="500" src={{movie.trailer}} title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        <track kind="captions" label="English captions" src="#" srclang="en" default/>
+                    </div>
+                    <div class="blog__details__item__text">
+                        <img src="{{movie.images.[0]}}" alt="">
+                        <p>{{movie.description1}}</p>
+                    </div>
+                    <div class="blog__details__item__text">
+                        <img src="{{movie.images.[1]}}" alt="">
+                        <p>{{movie.description2}}</p>
+                    </div>
+                    <div class="blog__details__item__text">
+                        <img src="{{movie.images.[2]}}" alt="">
+                        <p>{{movie.description3}}</p>
+                        <img src="{{movie.images.[3]}}" alt="">
+                    </div>
+                    <div class="blog__details__tags">
+                        <a href="#">Healthfood</a>
+                        <a href="#">Sport</a>
+                        <a href="#">Game</a>
+                    </div>
+                    <div class="blog__details__btns">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="blog__details__btns__item">
+                                    <h5><a href="#"><span class="arrow_left"></span> Building a Better LiA...</a>
+                                    </h5>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="blog__details__btns__item next__btn">
-                                        <h5><a href="#">Mugen no Juunin: Immortal – 21 <span
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="blog__details__btns__item next__btn">
+                                    <h5><a href="#">Mugen no Juunin: Immortal – 21 <span
                                             class="arrow_right"></span></a></h5>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="blog__details__comment">
-                                <h4>3 Comments</h4>
-                                {{#each comments}}
-                                    <div class="blog__details__comment__item">
-                                        <div class="blog__details__comment__item__pic">
-                                            {{#if this.userImg}}
-                                                <img src={{this.userImg}} alt="" class = "commentImg">
-                                            {{else}}
-                                                <img src="/img/blog/details/avatar.jpg" alt="" class = "commentImg">
-                                            {{/if}}
-                                        </div>
-                                        <div class="blog__details__comment__item__text">
-                                            <span>{{this.createdDay}}</span>
-                                            <h5>{{this.userName}}</h5>
-                                            <p>{{this.content}}</p>
-                                            <a href="#">Like</a>
-                                            <a href="#">Reply</a>
-                                        </div>
-                                    </div>
-                                {{/each}}
-                                <div class="blog__details__comment__item">
-                                    <div class="blog__details__comment__item__pic">
-                                        <img src="/img/blog/details/comment-1.png" alt="">
-                                    </div>
-                                    <div class="blog__details__comment__item__text">
-                                        <span>Sep 08, 2020</span>
-                                        <h5>John Smith</h5>
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                        adipisci velit, sed quia non numquam eius modi</p>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <div class="blog__details__comment__item blog__details__comment__item--reply">
-                                    <div class="blog__details__comment__item__pic">
-                                        <img src="/img/blog/details/comment-2.png" alt="">
-                                    </div>
-                                    <div class="blog__details__comment__item__text">
-                                        <span>Sep 08, 2020</span>
-                                        <h5>Elizabeth Perry</h5>
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                        adipisci velit, sed quia non numquam eius modi</p>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <div class="blog__details__comment__item">
-                                    <div class="blog__details__comment__item__pic">
-                                        <img src="/img/blog/details/comment-3.png" alt="">
-                                    </div>
-                                    <div class="blog__details__comment__item__text">
-                                        <span>Sep 08, 2020</span>
-                                        <h5>Adrian Coleman</h5>
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                        adipisci velit, sed quia non numquam eius modi</p>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blog__details__form">
-                                <h4>Leave A Comment</h4>
-                                <form action="/movie/review/{{movie._id}}/comment" method ="post" >
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <textarea placeholder="Content" id="content" name = "content"></textarea>
-                                            <button type="submit" class="site-btn">Comment</button>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
+                    </div>
+                    {{#unless canRate}}
+                        <div class='rating-widget'>
+                            <!-- Rating Stars Box -->
+                            <div class='rating-stars justify-content-center'>
+                                <ul id='stars'>
+                                    <li class='star' title='Poor' data-value='1'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Fair' data-value='2'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Good' data-value='3'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Excellent' data-value='4'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='WOW!!!' data-value='5'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class='success-box'>
+                                <div class='clearfix'></div>
+                                <input type="hidden" value="{{movie._id}}" id="movieID">
+                                <img class="tick-image" alt='tick image' width='32'
+                                     src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MjYuNjY3IDQyNi42NjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQyNi42NjcgNDI2LjY2NzsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiM2QUMyNTk7IiBkPSJNMjEzLjMzMywwQzk1LjUxOCwwLDAsOTUuNTE0LDAsMjEzLjMzM3M5NS41MTgsMjEzLjMzMywyMTMuMzMzLDIxMy4zMzMgIGMxMTcuODI4LDAsMjEzLjMzMy05NS41MTQsMjEzLjMzMy0yMTMuMzMzUzMzMS4xNTcsMCwyMTMuMzMzLDB6IE0xNzQuMTk5LDMyMi45MThsLTkzLjkzNS05My45MzFsMzEuMzA5LTMxLjMwOWw2Mi42MjYsNjIuNjIyICBsMTQwLjg5NC0xNDAuODk4bDMxLjMwOSwzMS4zMDlMMTc0LjE5OSwzMjIuOTE4eiIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K'/>
+                                <div class='text-message'></div>
+                                <div class='clearfix'></div>
+                            </div>
+                        </div>
+                    {{/unless}}
+                    <div class="blog__details__comment">
+                        <h4>3 Comments</h4>
+                        {{#each comments}}
+                            <div class="blog__details__comment__item">
+                                <div class="blog__details__comment__item__pic">
+                                    {{#if this.userImg}}
+                                        <img src={{this.userImg}} alt="" class="commentImg">
+                                    {{else}}
+                                        <img src="/img/blog/details/avatar.jpg" alt="" class="commentImg">
+                                    {{/if}}
+                                </div>
+                                <div class="blog__details__comment__item__text">
+                                    <span>{{this.createdDay}}</span>
+                                    <h5>{{this.userName}}</h5>
+                                    <p>{{this.content}}</p>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                </div>
+                            </div>
+                        {{/each}}
+                        <div class="blog__details__comment__item">
+                            <div class="blog__details__comment__item__pic">
+                                <img src="/img/blog/details/comment-1.png" alt="">
+                            </div>
+                            <div class="blog__details__comment__item__text">
+                                <span>Sep 08, 2020</span>
+                                <h5>John Smith</h5>
+                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                                    adipisci velit, sed quia non numquam eius modi</p>
+                                <a href="#">Like</a>
+                                <a href="#">Reply</a>
+                            </div>
+                        </div>
+                        <div class="blog__details__comment__item blog__details__comment__item--reply">
+                            <div class="blog__details__comment__item__pic">
+                                <img src="/img/blog/details/comment-2.png" alt="">
+                            </div>
+                            <div class="blog__details__comment__item__text">
+                                <span>Sep 08, 2020</span>
+                                <h5>Elizabeth Perry</h5>
+                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                                    adipisci velit, sed quia non numquam eius modi</p>
+                                <a href="#">Like</a>
+                                <a href="#">Reply</a>
+                            </div>
+                        </div>
+                        <div class="blog__details__comment__item">
+                            <div class="blog__details__comment__item__pic">
+                                <img src="/img/blog/details/comment-3.png" alt="">
+                            </div>
+                            <div class="blog__details__comment__item__text">
+                                <span>Sep 08, 2020</span>
+                                <h5>Adrian Coleman</h5>
+                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                                    adipisci velit, sed quia non numquam eius modi</p>
+                                <a href="#">Like</a>
+                                <a href="#">Reply</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog__details__form">
+                        <h4>Leave A Comment</h4>
+                        <form action="/movie/review/{{movie._id}}/comment" method="post">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <textarea placeholder="Content" id="content" name="content"></textarea>
+                                    <button type="submit" class="site-btn">Comment</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Blog Details Section End -->
+        </div>
+    </div>
+</section>
+<!-- Blog Details Section End -->

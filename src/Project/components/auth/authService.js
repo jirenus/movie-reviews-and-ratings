@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const History = require('./models/historyModel');
 const Favorite = require('./models/favoriteListModel');
 const Movie = require('../movie/movieModel');
+const UserRating = require('./models/userRatings');
 
 exports.findByUsername = (username) => {
     return User.findOne({
@@ -28,6 +29,9 @@ exports.createUser = async (userInfo) => {
             userID: userID
         });
         await Favorite.create({
+            userID: userID
+        });
+        await UserRating.create({
             userID: userID
         });
         return savedUser;
