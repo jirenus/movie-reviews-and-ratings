@@ -13,3 +13,6 @@
 | 19127629 | Nguyen Tan Viet | 19127629@student.hcmus.edu.vn | 
 | 19127633 | Nguyen Phan Vu | 19127633@student.hcmus.edu.vn |
 | 19127640 | Hoang Huu Giap | 19127640@student.hcmus.edu.vn |
+* This is main repository of project.
+* Besides this, we have other repository for website deployment - https://github.com/NgoTruongTuyen/movie-reviews
+* Website URL: https://movie-reviews-hcmus.herokuapp.com/
