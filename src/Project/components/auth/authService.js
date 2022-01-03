@@ -55,18 +55,24 @@ exports.saveToHistory = async (userID, movieID) => {
 exports.getFavoriteList = async (userID) => {
     let favorite = await Favorite.findOne({userID: userID}).lean();
     let movies = [];
-    for (let i = 0; i < favorite.movies.length; i++) {
-        let movie = await Movie.findById(favorite.movies[i]).lean();
-        movies.push(movie);
+    if (favorite != null){
+        for (let i = 0; i < favorite.movies.length; i++) {
+            let movie = await Movie.findById(favorite.movies[i]).lean();
+            movies.push(movie);
+        }
     }
+
     return movies;
 }
 exports.getHistoryList = async (userID) => {
     let history = await History.findOne({userID: userID}).lean();
     let movies = [];
-    for (let i = 0; i < history.movies.length; i++) {
-        let movie = await Movie.findById(history.movies[i]).lean();
-        movies.push(movie);
+    if (history != null){
+        for (let i = 0; i < history.movies.length; i++) {
+            let movie = await Movie.findById(history.movies[i]).lean();
+            movies.push(movie);
+        }
     }
+
     return movies;
 }
